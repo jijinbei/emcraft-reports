@@ -15,7 +15,7 @@ against a closed form or a published result where one exists, and by refining th
 
 | Report | Question | Status |
 |---|---|---|
-| [microwave-oven-leakage](microwave-oven-leakage/) | Does a household microwave oven's door keep its 2.45 GHz field inside, below 5 mW/cm² at 5 cm? | first version: door gap and chokes |
+| [microwave-oven-leakage](microwave-oven-leakage/) | Does a household microwave oven's door keep its 2.45 GHz field inside, below 5 mW/cm² at 5 cm? | v0.1: the whole oven (2.3 million unknowns), three doors, solved with EMCraft v0.1 |
 
 These are simulation studies. They show how a design behaves and why; they are not
 certification tests, which need measurements on the real product.

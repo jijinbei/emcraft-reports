@@ -1,0 +1,1472 @@
+{
+  "commands": [
+    {
+      "command": "file.new",
+      "params": {
+        "name": "Microwave oven"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "a",
+        "expression": "330",
+        "unit": "mm",
+        "comment": "cavity width (x)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "d",
+        "expression": "330",
+        "unit": "mm",
+        "comment": "cavity depth (y), door at y = 0"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "h",
+        "expression": "210",
+        "unit": "mm",
+        "comment": "cavity height (z)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "w",
+        "expression": "45",
+        "unit": "mm",
+        "comment": "wall, and the flange the door rests on"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "g",
+        "expression": "2",
+        "unit": "mm",
+        "comment": "gap between door and flange"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "t",
+        "expression": "40",
+        "unit": "mm",
+        "comment": "door thickness"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "cw",
+        "expression": "130",
+        "unit": "mm",
+        "comment": "control compartment's width, right of the cavity (x)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gb",
+        "expression": "86",
+        "unit": "mm",
+        "comment": "waveguide's broad side (y): TE10 cut off at 1.74 GHz"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gn",
+        "expression": "43",
+        "unit": "mm",
+        "comment": "waveguide's narrow side (x)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gy",
+        "expression": "195",
+        "unit": "mm",
+        "comment": "waveguide's centre (y), behind the cavity's middle"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gs",
+        "expression": "5",
+        "unit": "mm",
+        "comment": "wall between the cavity and the waveguide"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gz",
+        "expression": "20",
+        "unit": "mm",
+        "comment": "waveguide's shorted bottom end (z)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "ga",
+        "expression": "60",
+        "unit": "mm",
+        "comment": "feed aperture's height (z), at the guide's top end, through the cavity's right wall"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "tr",
+        "expression": "140",
+        "unit": "mm",
+        "comment": "turntable's radius"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "tt",
+        "expression": "6",
+        "unit": "mm",
+        "comment": "turntable's thickness"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "tz",
+        "expression": "12",
+        "unit": "mm",
+        "comment": "turntable's height above the floor, on its roller ring"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "br",
+        "expression": "42.5",
+        "unit": "mm",
+        "comment": "the load's radius: IEC 60335-2-25's beaker, about 85 mm across"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bw",
+        "expression": "2",
+        "unit": "mm",
+        "comment": "the beaker's glass bottom, left out: the water stands this high above the plate"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "lh",
+        "expression": "48.5",
+        "unit": "mm",
+        "comment": "water's depth: 275 ml in the beaker"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "ww",
+        "expression": "220",
+        "unit": "mm",
+        "comment": "door window's width (x)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "wh",
+        "expression": "150",
+        "unit": "mm",
+        "comment": "door window's height (z)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "wd",
+        "expression": "12",
+        "unit": "mm",
+        "comment": "door window's depth into the door's outer face: the screen at its bottom"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "fs",
+        "expression": "8.5",
+        "unit": "mm",
+        "comment": "slotted choke: where its channel's shorted end and the lip start, out from the cavity's edge"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "fl",
+        "expression": "36",
+        "unit": "mm",
+        "comment": "slotted choke: where the lip ends and the channel opens to the gap"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "cs",
+        "expression": "6",
+        "unit": "mm",
+        "comment": "choke groove's width"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "cl",
+        "expression": "30",
+        "unit": "mm",
+        "comment": "choke groove's distance from the cavity's edge: about a quarter wavelength"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "cd",
+        "expression": "30",
+        "unit": "mm",
+        "comment": "choke groove's depth: about a quarter wavelength"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + w + cw",
+        "width": "d + w",
+        "height": "h + 2*w",
+        "corner": [
+          "-w",
+          "0",
+          "-w"
+        ],
+        "body_name": "shell"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a",
+        "width": "d + 1 mm",
+        "height": "h",
+        "corner": [
+          "0",
+          "-1 mm",
+          "0"
+        ],
+        "operation": "cut",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "cw - w - g",
+        "width": "g + t",
+        "height": "h + 2*w",
+        "corner": [
+          "a + w + g",
+          "-g - t",
+          "-w"
+        ],
+        "operation": "join",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "gn",
+        "width": "gb",
+        "height": "h - gz",
+        "corner": [
+          "a + gs",
+          "gy - gb/2",
+          "gz"
+        ],
+        "operation": "cut",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "gs + 2 mm",
+        "width": "gb",
+        "height": "ga",
+        "corner": [
+          "a - 1 mm",
+          "gy - gb/2",
+          "h - ga"
+        ],
+        "operation": "cut",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*w",
+        "width": "t",
+        "height": "h + 2*w",
+        "corner": [
+          "-w",
+          "-g - t",
+          "-w"
+        ],
+        "operation": "new_body",
+        "body_name": "door"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*(fl + 4 mm)",
+        "width": "(-g - 1 mm) - (-g - 5 mm)",
+        "height": "h + 2*(fl + 4 mm)",
+        "corner": [
+          "-(fl + 4 mm)",
+          "-g - 5 mm",
+          "-(fl + 4 mm)"
+        ],
+        "operation": "new_body",
+        "body_name": "channel"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*(fs)",
+        "width": "(-g - 1 mm) - (-g - 5 mm) + 2 mm",
+        "height": "h + 2*(fs)",
+        "corner": [
+          "-(fs)",
+          "(-g - 5 mm) - 1 mm",
+          "-(fs)"
+        ],
+        "operation": "cut",
+        "targets": [
+          "channel"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*(fl + 4 mm)",
+        "width": "(-g) - (-g - 1 mm)",
+        "height": "h + 2*(fl + 4 mm)",
+        "corner": [
+          "-(fl + 4 mm)",
+          "-g - 1 mm",
+          "-(fl + 4 mm)"
+        ],
+        "operation": "new_body",
+        "body_name": "mouth"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*(fl)",
+        "width": "(-g) - (-g - 1 mm) + 2 mm",
+        "height": "h + 2*(fl)",
+        "corner": [
+          "-(fl)",
+          "(-g - 1 mm) - 1 mm",
+          "-(fl)"
+        ],
+        "operation": "cut",
+        "targets": [
+          "mouth"
+        ]
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "door",
+        "tools": [
+          "channel",
+          "mouth"
+        ],
+        "operation": "cut"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "10.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "10.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "28.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "28.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "46.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "46.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "64.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "64.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "82.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "82.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "100.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "100.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "118.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "118.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "136.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "136.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "154.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "154.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "172.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "172.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "190.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "190.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "208.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "208.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "226.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "226.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "244.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "244.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "262.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "262.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "280.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "280.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "298.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "298.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "316.75",
+          "-g - 1 mm",
+          "-fl - 0.5 mm"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "2.5",
+        "width": "1 mm",
+        "height": "fl - fs + 0.5 mm",
+        "corner": [
+          "316.75",
+          "-g - 1 mm",
+          "h + fs"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "13.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "13.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "31.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "31.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "49.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "49.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "67.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "67.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "85.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "85.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "103.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "103.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "121.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "121.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "139.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "139.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "157.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "157.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "175.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "175.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "-fl - 0.5 mm",
+          "-g - 1 mm",
+          "193.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "fl - fs + 0.5 mm",
+        "width": "1 mm",
+        "height": "2.5",
+        "corner": [
+          "a + fs",
+          "-g - 1 mm",
+          "193.75"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "ww",
+        "width": "wd + 1 mm",
+        "height": "wh",
+        "corner": [
+          "a/2 - ww/2",
+          "-g - t - 1 mm",
+          "h/2 - wh/2"
+        ],
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
+      }
+    },
+    {
+      "command": "solid.cylinder",
+      "params": {
+        "radius": "tr",
+        "height": "tt",
+        "base": [
+          "a/2",
+          "d/2",
+          "tz"
+        ],
+        "operation": "new_body",
+        "body_name": "turntable"
+      }
+    },
+    {
+      "command": "solid.cylinder",
+      "params": {
+        "radius": "br",
+        "height": "lh",
+        "base": [
+          "a/2",
+          "d/2",
+          "tz + tt + bw"
+        ],
+        "operation": "new_body",
+        "body_name": "water"
+      }
+    },
+    {
+      "command": "solid.move",
+      "params": {
+        "bodies": [
+          "shell",
+          "door",
+          "turntable",
+          "water"
+        ],
+        "translate": [
+          "105",
+          "162",
+          "105"
+        ]
+      }
+    }
+  ]
+}

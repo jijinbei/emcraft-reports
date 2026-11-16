@@ -4,3 +4,7 @@ scripts/cell/*.solidcraft
 *.err
 __pycache__/
 *.pdf
+# The planes' fields as numbers (tens of MB; scripts/figures.py draws results/plane-*.png from
+# them) and the snapshots results/model.png and doors-cad.png are put together from.
+microwave-oven-leakage/results/real/*.csv
+microwave-oven-leakage/results/model-parts/

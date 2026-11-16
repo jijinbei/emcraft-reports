@@ -1,5 +1,8 @@
-"""Writes the oven's SolidCraft scripts: `oven-gap` (a plain door over a gap) and `oven-choke`
-(the same door with a quarter-wave groove round its rim). Run, then build each design with
+"""Writes the oven's SolidCraft scripts: `oven-gap` (a plain door over a gap), `oven-choke` (the
+same door with a quarter-wave groove round its rim) and `oven-slotted` (a slotted folded choke).
+The oven is built as a counter-top one is: the cavity to the left, the control compartment to the
+right with the waveguide that feeds the cavity through its right wall, a glass turntable, the
+IEC load in a glass beaker on it, a window in the door. Run, then build each design with
 `solidcraft-cli run <name>.script.json --save <name>.solidcraft`."""
 import json, os
 
@@ -9,12 +12,22 @@ PARAMS = [
     ("a", 330, "cavity width (x)"), ("d", 330, "cavity depth (y), door at y = 0"),
     ("h", 210, "cavity height (z)"), ("w", 45, "wall, and the flange the door rests on"),
     ("g", 2, "gap between door and flange"), ("t", 40, "door thickness"),
-    ("lw", 60, "each water load's side"), ("lh", 38.2, "each water load's height: 137.5 ml, two of them 275 ml"), ("lx", 50, "each water load's centre from the middle plane x = a/2"),
-    ("lz", 15, "water load's height above the floor: where a turntable holds it"),
+    ("cw", 130, "control compartment's width, right of the cavity (x)"),
+    ("gb", 86, "waveguide's broad side (y): TE10 cut off at 1.74 GHz"), ("gn", 43, "waveguide's narrow side (x)"),
+    ("gy", 195, "waveguide's centre (y), behind the cavity's middle"), ("gs", 5, "wall between the cavity and the waveguide"),
+    ("gz", 20, "waveguide's shorted bottom end (z)"), ("ga", 60, "feed aperture's height (z), at the guide's top end, through the cavity's right wall"),
+    ("tr", 140, "turntable's radius"), ("tt", 6, "turntable's thickness"), ("tz", 12, "turntable's height above the floor, on its roller ring"),
+    ("br", 42.5, "the load's radius: IEC 60335-2-25's beaker, about 85 mm across"), ("bw", 2, "the beaker's glass bottom, left out: the water stands this high above the plate"), 
+    ("lh", 48.5, "water's depth: 275 ml in the beaker"),
+    ("ww", 220, "door window's width (x)"), ("wh", 150, "door window's height (z)"), ("wd", 12, "door window's depth into the door's outer face: the screen at its bottom"),
     ("fs", 8.5, "slotted choke: where its channel's shorted end and the lip start, out from the cavity's edge"),
     ("fl", 36, "slotted choke: where the lip ends and the channel opens to the gap"),
     ("cs", 6, "choke groove's width"), ("cl", 30, "choke groove's distance from the cavity's edge: about a quarter wavelength"), ("cd", 30, "choke groove's depth: about a quarter wavelength"),
 ]
+
+# The design's origin is the corner of EMCraft's box of air; the cavity's front lower left corner
+# sits here (mm): 60 mm left of the cabinet, below and above it, 120 mm in front of the door.
+OFFSET = (60 + 45, 120 + 2 + 40, 60 + 45)
 
 def box(length, width, height, corner, **kw):
     return {"command": "solid.box", "params": {"length": length, "width": width, "height": height, "corner": corner, **kw}}
@@ -51,12 +64,19 @@ def slotted_choke():
                 slots.append(box(*size, corner, operation="cut", targets=["door"]))
     return c + slots
 
-def script(choke, slotted=False):
+def script(choke, slotted=False, load=False):
     c = [{"command": "file.new", "params": {"name": "Microwave oven" + (" with choke" if choke else "")}}]
     c += [{"command": "parameters.add", "params": {"name": n, "expression": str(v), "unit": "mm", "comment": what}} for n, v, what in PARAMS]
-    # The shell: a box with the cavity cut out through its front.
-    c.append(box("a + 2*w", "d + w", "h + 2*w", ["-w", "0", "-w"], body_name="shell"))
+    # The shell: the cabinet's metal, the cavity cut out through its front, the control
+    # compartment to its right brought forward flush with the door (a gap g beside the door's edge).
+    c.append(box("a + w + cw", "d + w", "h + 2*w", ["-w", "0", "-w"], body_name="shell"))
     c.append(box("a", "d + 1 mm", "h", ["0", "-1 mm", "0"], operation="cut", targets=["shell"]))
+    c.append(box("cw - w - g", "g + t", "h + 2*w", ["a + w + g", "-g - t", "-w"], operation="join", targets=["shell"]))
+    # The waveguide, up the compartment beside the cavity's right wall: shorted at its bottom, the
+    # magnetron's antenna a quarter guide wavelength above that, open into the cavity at its top
+    # through an aperture in the wall between them.
+    c.append(box("gn", "gb", "h - gz", ["a + gs", "gy - gb/2", "gz"], operation="cut", targets=["shell"]))
+    c.append(box("gs + 2 mm", "gb", "ga", ["a - 1 mm", "gy - gb/2", "h - ga"], operation="cut", targets=["shell"]))
     # The door: a plate over the opening and the flange, a gap g in front of it.
     c.append(box("a + 2*w", "t", "h + 2*w", ["-w", "-g - t", "-w"], operation="new_body", body_name="door"))
     if choke:
@@ -68,14 +88,26 @@ def script(choke, slotted=False):
         c.append({"command": "solid.combine", "params": {"target": "door", "tools": ["groove"], "operation": "cut"}})
     if slotted:
         c += slotted_choke()
-    # The load: 275 ml of water (IEC 60335-2-25's leakage test load) in two beakers of 137.5 ml
-    # either side of the middle plane x = a/2, held up where a turntable holds them: the oven
-    # stays mirror-symmetric about that plane, which then halves the model.
-    for name, centre in (("water", "a/2 - lx"), ("water2", "a/2 + lx")):
-        c.append(box("lw", "lw", "lh", [f"{centre} - lw/2", "d/2 - lw/2", "lz"], operation="new_body", body_name=name))
+    # The window: a recess in the door's outer face, its bottom the perforated screen (holes of a
+    # millimetre or two, cut off far below 2.45 GHz: metal to the field, see the report).
+    c.append(box("ww", "wd + 1 mm", "wh", ["a/2 - ww/2", "-g - t - 1 mm", "h/2 - wh/2"], operation="cut", targets=["door"]))
+    if load:
+        # The turntable: a glass plate on its roller ring above the floor; the load on it, 275 ml
+        # of water (IEC 60335-2-25's leakage test load) where a beaker 85 mm across holds it at
+        # the centre. Drawn only: EMCraft places the two as cylinders of its own (scripts/make.py),
+        # meshed on their exact surfaces; the beaker's thin glass is left out (EMCraft does not
+        # mesh a dielectric inside or against another yet), the water standing its bottom's
+        # thickness above the plate.
+        c.append({"command": "solid.cylinder", "params": {"radius": "tr", "height": "tt", "base": ["a/2", "d/2", "tz"], "operation": "new_body", "body_name": "turntable"}})
+        c.append({"command": "solid.cylinder", "params": {"radius": "br", "height": "lh", "base": ["a/2", "d/2", "tz + tt + bw"], "operation": "new_body", "body_name": "water"}})
+    # Into the frame EMCraft's box of air starts at: room round the oven for the air and the
+    # layer, most of it in front of the door, where the leak is measured.
+    c.append({"command": "solid.move", "params": {"bodies": ["shell", "door"] + (["turntable", "water"] if load else []), "translate": [str(v) for v in OFFSET]}})
     return {"commands": c}
 
-for name, choke, slotted in (("oven-gap", False, False), ("oven-choke", True, False), ("oven-slotted", False, True)):
+# The three solved; the slotted one again with its load, for the pictures.
+for name, choke, slotted, load in (("oven-gap", False, False, False), ("oven-choke", True, False, False),
+                                   ("oven-slotted", False, True, False), ("oven-view", False, True, True)):
     with open(os.path.join(HERE, name + ".script.json"), "w") as f:
-        json.dump(script(choke, slotted), f, indent=2)
+        json.dump(script(choke, slotted, load), f, indent=2)
         f.write("\n")

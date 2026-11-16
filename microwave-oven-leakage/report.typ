@@ -1,166 +1,205 @@
 #import "../template/report.typ": report, check
 
 #show: report.with(
-  title: "電子レンジのドアからの電波漏洩の検討",
-  subtitle: "2.45 GHz、ドア前方 5 cm での電力密度と 5 mW/cm² の基準",
+  lang: "en",
+  title: "Microwave Leakage Through a Microwave Oven's Door",
+  subtitle: "Power density 5 cm in front of the door at 2.45 GHz against the 5 mW/cm² limit",
   authors: ("EMCraft contributors",),
   date: "2026",
   abstract: [
-    家庭用電子レンジ（2.45 GHz、庫内に 1000 W）のドアの隙間から漏れる電波を、レンジ全体の 3D 電磁界解析で求め、
-    ドア前方 5 cm の電力密度を基準 5 mW/cm² と比べる。対策のない 2 mm の隙間、教科書どおりの λ/4 の溝、
-    実際の製品に使われるスリット付きの折り返しチョークの三つを比べ、溝が効かない理由とスリットの役割を、
-    隙間を切り出した 2 ポートの解析と伝送線路モデルで示す。
-    本書はシミュレーションによる設計検討であり、製品の認証試験ではない。
+    We compute the 2.45 GHz field that leaks through the door gap of a household microwave oven (1000 W into the cavity)
+    with a 3D electromagnetic model of the whole oven — control panel, door window, glass turntable and a water load —
+    of 2.0 to 2.3 million unknowns, solved with EMCraft v0.1, and compare the power density 5 cm in front of the door with the 5 mW/cm² limit.
+    Three doors are compared: a plain 2 mm gap, the textbook quarter-wave ring groove, and the slotted folded choke used in real ovens.
+    The plain gap leaks up to 69 mW/cm² and the ring groove 142 mW/cm², both far above the limit; the slotted choke brings it down to 0.008 mW/cm².
+    A two-port model of the gap and a transmission-line model show why the groove fails and what the slots do.
+    This is a simulation study of a design, not a certification test of a product.
   ],
 )
 
-= 問題と基準
+= Problem and limits
 
-家庭用電子レンジは 2.45 GHz の ISM 帯で、マグネトロンの出力（約 1000 W）を金属の箱の中に閉じ込めて
-食品を温める。箱の開口はドアだけで、ドアには中が見えるようにパンチングメタルの窓があり、
-扉と本体の間には隙間がある。基準はどちらも、外面から 5 cm の位置での漏洩電力密度で定めている。
+A household microwave oven confines the output of its magnetron (about 1000 W at 2.45 GHz, an ISM band)
+in a metal box to heat food. The box's only opening is the door: it has a window of perforated metal to see through,
+and there is a gap between the door and the body. Both limits are set on the leaking power density 5 cm from the outer surface.
 
-- IEC 60335-2-25（32 項）：外面から 5 cm で 50 W/m²（= 5 mW/cm²）以下。
-- 米国 21 CFR 1030.10(c)(1)：外面から 5 cm で、出荷時 1 mW/cm²、以後 5 mW/cm² 以下。
+- IEC 60335-2-25 (clause 32): at most 50 W/m² (= 5 mW/cm²) at 5 cm from the outer surface.
+- US 21 CFR 1030.10(c)(1): at 5 cm, 1 mW/cm² when shipped and 5 mW/cm² thereafter.
 
-本書は 5 mW/cm² を基準とし、出荷時の 1 mW/cm² にどれだけ余裕があるかも示す。
+We take 5 mW/cm² as the limit and also show the margin to the 1 mW/cm² shipping limit.
 
-= 閉形式による見積もり
+= Closed-form estimates
 
-数値解析の前に、各部の振る舞いを閉形式で見積もる。後の解析はこれと照合する（@sec-verify）。
+Before the numerical model, we estimate how each part behaves in closed form; the analysis is checked against these (@sec-verify).
 
-== 庫内の共振
+== Cavity resonances
 
-庫内（幅 $a$、高さ $b$、奥行き $d$ の直方体、金属壁）の共振周波数は
+The resonant frequencies of the cavity (a rectangular box of width $a$, height $b$ and depth $d$ with metal walls) are
 $ f_(m n p) = c/2 sqrt((m/a)^2 + (n/b)^2 + (p/d)^2) $ <eq-cavity>
-である（Pozar, _Microwave Engineering_, 4th ed., §6.7）。
-寸法が波長（12.2 cm）の数倍あるため 2.45 GHz の近くに多くのモードがあり、
-庫内の電界は場所で大きく変わる。これが、ターンテーブルやスターラーで加熱むらを減らす理由である。
+(Pozar, _Microwave Engineering_, 4th ed., §6.7).
+The cavity is several wavelengths (12.2 cm) across, so many modes lie near 2.45 GHz and
+the field inside varies strongly from place to place. This is why a turntable or a stirrer is used to even out the heating.
 
-== パンチングメタルの孔：遮断より下の導波管
+== Holes in the screen: waveguides below cutoff
 
-直径 $D$ の円孔を厚さ $t$ の板に開けると、孔は短い円形導波管になる。
-最低次の TE#sub[11] モードの遮断波長は $lambda_c = 1.706 D$ であり（Pozar §3.4）、
-$lambda >> lambda_c$ では孔を通る波は
+A round hole of diameter $D$ in a plate of thickness $t$ is a short circular waveguide.
+The cutoff wavelength of its lowest mode, TE#sub[11], is $lambda_c = 1.706 D$ (Pozar §3.4);
+for $lambda >> lambda_c$ a wave through the hole is attenuated by
 $ A = 8.686 dot (2 pi) / lambda_c sqrt(1 - (lambda_c / lambda)^2) dot t
   approx 32.0 dot t / D quad "dB" $ <eq-cutoff>
-だけ減衰する。正方形の孔（辺 $w$、TE#sub[10]、$lambda_c = 2 w$）では $A approx 27.3 dot t / w$ dB となる。
-たとえば $D = 2$ mm、$t = 0.6$ mm なら $A approx 9.6$ dB である。これは孔の中での減衰だけで、
-孔の入口と出口での結合（Bethe の小孔理論、Bethe 1944）による減衰がこれに加わる。
+For a square hole of side $w$ (TE#sub[10], $lambda_c = 2 w$), $A approx 27.3 dot t / w$ dB.
+For $D = 2$ mm and $t = 0.6$ mm, $A approx 9.6$ dB. This is the attenuation inside the hole only; the coupling into and out of
+the hole (Bethe's small-hole theory, Bethe 1944) adds to it.
 
-== ドアの隙間とチョーク
+== Door gap and choke
 
-扉と本体の間の隙間は平行平板の線路になる。隙間の奥に深さ $lambda\/4$（2.45 GHz で約 30 mm）の
-溝（チョーク）を置くと、溝の口で短絡が開放に変わり、隙間の入口から見て直列に高いインピーダンスが入る。
-隙間を通る電流が抑えられ、漏れが減る。この効果は周波数とともに変わり、溝の深さが $lambda\/4$ からずれると弱まる。
+The gap between the door and the body is a parallel-plate line. A groove (a choke) a quarter wavelength deep
+(about 30 mm at 2.45 GHz) placed in the gap turns the short at its bottom into an open at its mouth, putting a high impedance in series
+along the gap. The current along the gap is suppressed, and so is the leak. The effect depends on frequency and weakens as the depth departs from $lambda\/4$.
 
-= モデル
+= Model
 
-== レンジ全体
+== The whole oven
 
-レンジは SolidCraft のスクリプトで組む（`model/make.py` が `oven-gap`、`oven-choke`、`oven-slotted` の 3 つを書く）。
-寸法はすべて設計パラメータで、表のとおりである。
+The oven is built as a real countertop oven (SolidCraft scripts: `model/make.py` writes `oven-gap`, `oven-choke` and `oven-slotted`).
+The cavity is on the left and the control compartment on the right; the magnetron's power reaches the cavity's right wall through a waveguide inside the control compartment.
+All dimensions are design parameters, listed below.
 
 #table(columns: 3, align: (left, right, left),
-  [*記号*], [*値*], [*意味*],
-  [$a times d times h$], [330 × 330 × 210 mm], [庫内（幅・奥行き・高さ）、ドアは $y = 0$],
-  [$w$], [45 mm], [壁の厚さ。ドアが重なるフランジの幅でもある],
-  [$g$], [2 mm], [ドアとフランジの隙間],
-  [$t$], [40 mm], [ドアの厚さ],
-  [$l_w^2 times l_h$], [60 × 60 × 38.2 mm], [水の負荷 1 つ（137.5 ml）。2 つで 275 ml],
-  [$l_x$, $l_z$], [50 mm, 15 mm], [負荷の中心面からの距離と床からの高さ],
-  [$c_s times c_d$, $c_l$], [6 × 30 mm, 30 mm], [単純な溝の幅・深さと、庫内の縁からの距離（`oven-choke`）],
-  [$f_s$, $f_l$], [8.5 mm, 36 mm], [スリット付きチョークのリップの始まりと終わり（`oven-slotted`）],
+  [*Symbol*], [*Value*], [*Meaning*],
+  [$a times d times h$], [330 × 330 × 210 mm], [cavity (width, depth, height); the door at $y = 0$],
+  [$w$], [45 mm], [wall thickness, also the width of the flange the door rests on],
+  [$g$], [2 mm], [gap between door and flange; the same between the door's right edge and the control panel],
+  [$t$], [40 mm], [door thickness],
+  [$c_w$], [130 mm], [width of the control compartment (right of the cavity)],
+  [$g_b times g_n$], [86 × 43 mm], [waveguide cross-section (TE#sub[10] cutoff 1.74 GHz), shorted at its bottom, opening into the cavity's right wall through an 86 × 60 mm aperture at its top],
+  [$t_r$, $t_t$], [140 mm, 6 mm], [radius and thickness of the glass turntable (12 mm above the floor)],
+  [$b_r$, $l_h$], [42.5 mm, 48.5 mm], [radius and depth of the water load (275 ml)],
+  [$w_w times w_h$], [220 × 150 mm], [door window (a 12 mm deep recess whose bottom is the perforated screen)],
+  [$c_s times c_d$, $c_l$], [6 × 30 mm, 30 mm], [ring groove's width and depth, and its distance from the cavity's edge (`oven-choke`)],
+  [$f_s$, $f_l$], [8.5 mm, 36 mm], [start and end of the slotted choke's lip (`oven-slotted`)],
 )
 
-- 本体（`shell`）とドア（`door`）は完全導体とする。ドアのパンチングメタルはここでは孔のない金属板とする（孔からの漏れは本版では扱わない）。
-- 水は 25 °C の Debye モデル（$epsilon_s = 78.36$、$epsilon_oo = 5.2$、$tau = 8.27$ ps；Kaatze 1989）で、
-  2.45 GHz では $epsilon_r = 77.2 - j 9.2$ である。漏洩試験の負荷 275 ml（IEC 60335-2-25）を 137.5 ml ずつ 2 つのビーカーに分け、中心面 $x = a\/2$ の両側に置く。
-- マグネトロンのアンテナは、天井から中心面の中に下がる 30 mm のランプポート（`feed`）で表す。
-- 外側は空気の箱で囲み、その外周を厚さ 31 mm（2.45 GHz の $lambda\/4$）の PML で吸収させる。レンジの各面から PML の外縁までは 90 mm である。
-- レンジは中心面 $x = a\/2$ について鏡像対称で、給電の電流はその面の中を流れる。場はその面について偶なので、面を磁気壁としてモデルの半分だけを解く（EMCraft の対称面。給電は電流の半分を受け持つ）。
+- The body (`shell`) and the door (`door`) are perfect conductors. The window's perforated screen is a metal plate without holes (leakage through the holes is not covered in this version; @eq-cutoff).
+- The magnetron's antenna is a lumped port (`feed`) reaching 18 mm into the guide from its outer broad wall, a quarter of a guide wavelength (174 mm) from the shorted end.
+- The load is the 275 ml of water of the IEC 60335-2-25 leakage test, in a beaker 85 mm across at the middle of the turntable.
+  The water follows a Debye model at 25 °C ($epsilon_s = 78.36$, $epsilon_oo = 5.2$, $tau = 8.27$ ps; Kaatze 1989): $epsilon_r = 77.2 - j 9.2$ at 2.45 GHz.
+  The turntable is borosilicate glass ($epsilon_r = 4.6$, $tan delta = 0.005$; von Hippel 1954).
+  The beaker's thin glass (2 mm) is left out and the water sits that much above the plate (EMCraft cannot yet mesh a dielectric inside, or touching, another dielectric).
+- An air box surrounds the oven and a 31 mm thick PML ($lambda\/4$ at 2.45 GHz) absorbs at its outside. It reaches 120 mm in front of the door, where the leak is measured, and 45–60 mm elsewhere (the cabinet is metal, so the leak can only come from round the door).
+- The feed on the right and the control compartment on one side leave the oven without a symmetry plane: the whole oven is solved.
 
-== チョークの構造
+#figure(image("results/model.png", width: 100%), caption: [The 3D model of the oven solved (slotted choke, drawn by SolidCraft). (a) Outside: the door (with its window) on the left, the control panel on the right. (b) Inside, the body and the door see-through: the slots round the door's rim, the turntable (light blue) and the water (blue), the waveguide running up the control compartment. (c) A horizontal section at the feed's height, seen from above: the waveguide opens into the cavity's right wall.]) <fig-model>
 
-#table(columns: 2, align: (left, left),
-  [*`oven-gap`*], [ドアは平らな金属板。隙間 2 mm がフランジの幅 45 mm にわたって続き、外へ抜ける。],
-  [*`oven-choke`*], [ドアの内面に、庫内の縁から 30 mm（$lambda\/4$）の位置に幅 6 mm・深さ 30 mm（$lambda\/4$）の溝を一周させる（教科書どおりのチョーク）。],
-  [*`oven-slotted`*], [折り返しチョーク（Osepchuk ら、US 3,767,884）。ドアの縁に厚さ 1 mm のリップを設け、その裏に深さ 4 mm の通路を設ける。通路はリップの先端で隙間につながり、庫内側で短絡する。リップには、隙間を横切る向きに幅 2.5 mm のスリットを 18 mm おきに 58 本切り、リップを櫛の歯にする。],
-)
+== The chokes
 
-#figure(image("results/model.png", width: 100%), caption: [スリット付きチョークのレンジ（`oven-slotted`、SolidCraft で描画）。(a) 本体とドアを半透明にした全体。ドアの縁を一周するスリットと、2 つの水の負荷が見える。(b) 縁を横に切った断面。上が本体のフランジ、下がドアで、その間が 2 mm の隙間。リップの裏に通路があり、左端で隙間につながる。(c) リップの面で切った断面。櫛の歯のスリットと、通路への口（輪）。]) <fig-model>
+The gap between the door and the body runs from the cavity's edge across the 45 mm flange to the outside. The three doors differ only in the door's inner face, the side facing this gap.
+@fig-doors-cad shows where each choke is in the CAD models and @fig-choke draws their cross-sections.
 
-= 解析
+- *No choke* (`oven-gap`): the door's inner face is flat; the 2 mm gap runs straight to the outside.
+- *Ring groove* (`oven-choke`): a groove 6 mm wide and 30 mm ($lambda\/4$) deep runs all round the door's inner face, 30 mm from the cavity's edge: the textbook choke.
+- *Slotted choke* (`oven-slotted`): a folded choke (Osepchuk et al., US 3,767,884). The door's rim facing the gap is a 1 mm plate (the lip) with a 4 mm deep channel behind it.
+  The channel opens into the gap at its outer end (its mouth) and is closed at the cavity end. 58 slots 2.5 mm wide, every 18 mm, cut the lip into teeth.
 
-== 隙間を切り出した 2 ポート
+#figure(image("results/doors-cad.png", width: 100%), caption: [The three doors in the CAD models (SolidCraft). Top: the door seen from the cavity (the body cut away just behind it; the hatched block on the left is the control panel's cut). The ring groove runs all round the rim; the slots line the rim. Bottom: the door's lower rim cut at the middle ($x = a\/2$), the outside on the left, the cavity on the right; brown hatching is the door's cut, blue the body's.]) <fig-doors-cad>
 
-ドアの縁の一部を切り出し、庫内側（ポート 1）から外側（ポート 2）へ 2 mm の隙間を通る 2 ポートとして解く（`scripts/cell.py`）。
-縁に沿った幅 $b$ の両側を導体壁で閉じるので、隙間の波は縁に沿って $sin(pi y\/b)$ と変わる。
-$b = 300$ mm はほぼ一様な場合、$b = 80$ mm は縁に沿って強く変わる場合である。
-実際のレンジでは、庫内の場は縁に沿って何度も強弱を繰り返す（@fig-doors の上）。
+#figure(image("results/choke.svg", width: 100%), caption: [The gap round the three doors, cut across the lower rim (where: the red line in @fig-lip (b)); the outside on the left, the cavity on the right. Grey is metal, light blue air, the red dashes the leak's path (cavity → 2 mm gap → outside). The groove (b) is 6 mm wide and 30 mm ($lambda\/4$) deep, open to the gap. The lip (c) is 1 mm thick; the channel behind it, 4 mm deep, opens into the gap at its lower end.]) <fig-choke>
 
-単純な溝を、隙間の線路に直列に入った先端短絡のスタブとみなすと、
+#figure(image("results/lip.svg", width: 90%), caption: [(a) The slotted choke's lip seen from the cavity. The dark parts open into the channel behind; the slots are 2.5 mm wide, every 18 mm, cutting the lip into teeth. (b) The oven from the front; the red line is where @fig-choke cuts.]) <fig-lip>
+
+== Solving
+
+The models are solved with EMCraft v0.1. Second-order Nédélec elements on a mesh of 4 elements per wavelength give 1.99 million unknowns without a choke,
+2.04 million with the ring groove and 2.31 million with the slotted choke.
+They are solved with EMCraft's direct solver (multifrontal LDL#super[T]). The largest fronts are never formed whole: they are assembled and factored panel by panel,
+and the factor's large blocks are kept as low-rank tiles to a tolerance of $10^(-8)$ (block low-rank approximation; Amestoy et al., SIAM J. Sci. Comput. 37(3), 2015).
+Iterative refinement recovers the accuracy given up, to a backward error of $10^(-16)$ or less. Each model fits a 30 GB machine (peak 20–26 GB) and takes about 25 minutes.
+
+= Analysis
+
+== The gap as a two-port
+
+A piece of the door's rim is cut out and solved as a two-port through the 2 mm gap, from the cavity side (port 1) to the outside (port 2) (`scripts/cell.py`).
+Conducting walls close it on both sides across a width $b$ along the rim, so the wave in the gap varies along the rim as $sin(pi y\/b)$.
+$b = 300$ mm is a nearly uniform field, $b = 80$ mm one that varies strongly along the rim.
+In the real oven the field inside rises and falls many times along the rim (@fig-plane-A, @fig-plane-B inside the cavity).
+
+Seen as a shorted stub in series with the gap's line, the plain groove gives
 $ S_21 = (2 Z_0) / (2 Z_0 + j Z_g tan beta d), quad beta^2 = k^2 - (pi\/b)^2 $ <eq-stub>
-となる（$Z_g\/Z_0$ は溝の幅と隙間の比 3、$d$ は溝の深さ。Pozar §2.3、§4.3）。
-縁に沿った変化があると $beta$ が小さくなり、溝が $lambda\/4$ として働く周波数が上がる。
+($Z_g\/Z_0$ is the ratio of the groove's width to the gap, 3; $d$ is the groove's depth; Pozar §2.3, §4.3).
+A field that varies along the rim makes $beta$ smaller, and the frequency at which the groove acts as $lambda\/4$ rises.
 
 #table(columns: 4, align: (left, right, right, right),
-  [*構造*], [*$b$*], [*2.45 GHz の $|S_21|$*], [*谷*],
-  [単純な溝], [300 mm], [−22.5 dB（式 −27.6 dB）], [2.65 GHz],
-  [単純な溝], [80 mm], [−7.7 dB（式 −8.0 dB）], [3.20 GHz],
-  [折り返し・スリットなし], [80 mm], [−5.2 dB], [3.20 GHz],
-  [スリット付き（$f_s = 10$ mm）], [300 / 80 mm], [−22.5 / −24.3 dB], [2.55 / 2.55 GHz],
-  [スリット付き（$f_s = 8.5$ mm）], [300 / 80 mm], [−73.2 / −40.1 dB], [2.45 / 2.45 GHz],
+  [*Structure*], [*$b$*], [*$|S_21|$ at 2.45 GHz*], [*Dip*],
+  [plain groove], [300 mm], [−22.5 dB (formula −27.6 dB)], [2.65 GHz],
+  [plain groove], [80 mm], [−7.7 dB (formula −8.0 dB)], [3.20 GHz],
+  [folded, no slots], [80 mm], [−5.2 dB], [3.20 GHz],
+  [slotted ($f_s = 10$ mm)], [300 / 80 mm], [−22.5 / −24.3 dB], [2.55 / 2.55 GHz],
+  [slotted ($f_s = 8.5$ mm)], [300 / 80 mm], [−73.2 / −40.1 dB], [2.45 / 2.45 GHz],
 )
 
-単純な溝は、縁に沿った変化が強い波（$b = 80$ mm）には 2.45 GHz でほとんど効かない（谷が 3.2 GHz へずれる）。
-スリットはリップを櫛の歯にして縁に沿った電流を断ち、どちらの波にも同じ周波数で谷をつくる。
-これは特許の説明（スリットが縁に沿って伝わるモードを止める）と一致する。
+The plain groove hardly works at 2.45 GHz on a wave that varies strongly along the rim ($b = 80$ mm): its dip moves to 3.2 GHz.
+The slots cut the lip into teeth, which stop the current along the rim, and give both waves a dip at the same frequency.
+This agrees with the patent's explanation (the slots stop the modes that travel along the rim).
 
-= 結果
+= Results
 
-ドア前方 5 cm（外面から 50 mm、ドアの面を覆う 15 × 14 点）の電力密度 $1\/2 "Re"(E times H^*)$ を、
-庫内に入る電力（給電の入射から反射を引いた電力）を 1000 W として換算した。
+The power density $1\/2 "Re"(E times H^*)$ 5 cm in front of the door (50 mm from its outer face, on 17 × 15 points every 30 mm × 20 mm covering the door and the control panel)
+is scaled to 1000 W accepted by the oven (the feed's incident power less the reflected).
 
-#table(columns: 3, align: (left, right, right),
-  [*ドアの構造*], [*最大 (mW/cm²)*], [*平均 (mW/cm²)*],
-  [チョークなし（`oven-gap`）], [1.77], [0.39],
-  [単純なリング溝（`oven-choke`）], [33.9], [4.7],
-  [スリット付きチョーク（`oven-slotted`）], [0.0021], [0.0004],
+#table(columns: 4, align: (left, right, right, right),
+  [*Door*], [*Maximum (mW/cm²)*], [*Mean (mW/cm²)*], [*Against 5 mW/cm²*],
+  [no choke (`oven-gap`)], [69.1], [13.7], [14 ×],
+  [ring groove (`oven-choke`)], [141.5], [23.6], [28 ×],
+  [slotted choke (`oven-slotted`)], [0.0079], [0.0011], [1/630],
 )
 
-#figure(image("results/doors.png", width: 85%), caption: [ドア中央の縦断面の $|E|$（給電 1 W あたり、10 V/m で飽和）。上からチョークなし、単純なリング溝、スリット付きチョーク。ドアは灰色の下辺、レンジの外は下側。]) <fig-doors>
+The fields are shown on the four planes of @fig-planes. The colour is $|E|$ for 1000 W on a log scale; "limit" on the colour bar is
+the $|E|$ of a plane wave of 5 mW/cm² (194 V/m). Near the door the field is not a plane wave, so the mark is a guide; the verdict is the power density in the table above.
 
-#figure(image("results/front.png", width: 100%), caption: [ドアの正面、外面から 2 mm 前の面の $|E|$（給電 1 W あたり、3 V/m で飽和）。ドアは $x$ 90〜510 mm、$z$ 90〜390 mm を覆う。チョークなしでは、ドアの四辺の縁に沿って赤い帯が並ぶ：隙間から出た場である。単純な溝ではドアの前面全体が強い場に包まれる。スリット付きチョークでは縁にもほとんど場がない。]) <fig-front>
+#figure(image("results/planes.svg", width: 100%), caption: [Where the field pictures' planes lie. A: a vertical section through the middle of the cavity ($x = a\/2$); B: a horizontal section at the feed's height; C: 2 mm in front of the door's outer face; D: 5 cm in front of it (the limit's plane).]) <fig-planes>
 
-どこから漏れるかは @fig-front で見える。漏れはドアの面からではなく、ドアの四辺の縁（隙間の出口）から出て、ドアの前に回り込む。
-単純なリング溝は、縁に沿って共振して漏れを約 20 倍に増やした。スリット付きチョークは漏れの最大をチョークなしの約 1/860（−29 dB）に下げた。
-基準 5 mW/cm²（出荷時 1 mW/cm²）に対し、スリット付きチョークは 3 桁以上の余裕がある。チョークなしでも 2 mm の隙間なら基準内だが、出荷時の基準の 2 倍近い。
+#figure(image("results/plane-B.png", width: 100%), caption: [$|E|$ on plane B (horizontal, at the feed, seen from above; the door at the bottom, metal grey). Without a choke and with the ring groove the field is strong all along the front of the door, strongest in front of the seam between the door and the control panel ($x approx 480$ mm). With the slotted choke the outside is at a few V/m.]) <fig-plane-B>
 
-= 検証 <sec-verify>
+#figure(image("results/plane-D.png", width: 100%), caption: [$|E|$ on plane D (5 cm in front of the door, seen from the front). The black frames are the door, its window and the control panel.]) <fig-plane-D>
 
-#check([単純な溝の $|S_21|$（2.45 GHz、$b = 80$ mm）], [−7.7 dB], [−8.0 dB（@eq-stub）], [1 dB], [直列スタブの伝送線路モデル。Pozar, _Microwave Engineering_, §2.3、§4.3])
+#figure(image("results/plane-C.png", width: 100%), caption: [$|E|$ on plane C (2 mm in front of the door's outer face).]) <fig-plane-C>
 
-#check([単純な溝の $|S_21|$（2.45 GHz、$b = 300$ mm）], [−22.5 dB], [−27.6 dB（@eq-stub）], [谷に近く、接合部の寄生リアクタンスでずれる], [同上。谷の周波数は 2.65 GHz と 2.55 GHz])
+#figure(image("results/plane-A.png", width: 100%), caption: [$|E|$ on plane A (the vertical section through the middle of the cavity, seen from the side; the door on the left). The field leaves through the gap between the door and the body at the door's upper and lower edges. With the ring groove it is strong inside the groove too.]) <fig-plane-A>
 
-#check([対称面で切ったモデル], [半分・1/4 のモデルの放射抵抗], [全体のモデル（5 % 以内）、Hertz ダイポール $80 pi^2 (l\/lambda)^2$（10 % 以内）], [5 %], [EMCraft のテスト `a_gap_in_symmetry_planes_is_solved_on_a_quarter_of_an_open_box`。Balanis, _Antenna Theory_, §4.2])
+The leak comes not through the door's face (the window) but through the gap round its edges. Without a choke it is strongest in front of the seam between the door and the control panel (@fig-plane-B, @fig-plane-D).
+The ring groove doubles the leak: it resonates along the rim and strengthens the field in the gap instead (inside the groove in @fig-plane-A).
+The slotted choke lowers the maximum to about 1/8800 of the plain gap's (−39 dB): about 600 times below the 5 mW/cm² limit and more than 100 times below the 1 mW/cm² shipping limit.
 
-メッシュを 1 波長あたり 4 要素と 5 要素で解き比べた（2 次要素、`results/pw4/`）。
-平均はどの構造でも 10 % 以内で一致し、最大は点ごとの値なので 30 % まで動く。
-三つの構造の差（1 桁から 3 桁）は、この幅よりはるかに大きい。
+The previous version's half model, without a control panel, gave a maximum of 1.8 mW/cm² without a choke.
+The whole oven adds the leak through the seam beside the panel and is close to 40 times higher.
+
+= Verification <sec-verify>
+
+#check([plain groove's $|S_21|$ (2.45 GHz, $b = 80$ mm)], [−7.7 dB], [−8.0 dB (@eq-stub)], [1 dB], [the series-stub transmission-line model. Pozar, _Microwave Engineering_, §2.3, §4.3])
+
+#check([plain groove's $|S_21|$ (2.45 GHz, $b = 300$ mm)], [−22.5 dB], [−27.6 dB (@eq-stub)], [near the dip, shifted by the junction's parasitic reactance], [as above; the dips are at 2.65 GHz and 2.55 GHz])
+
+#check([compressed factor], [S-parameters solved with the factor compressed to $10^(-6)$ (coarser than this report's $10^(-8)$) and iterative refinement (the high-pass filter sample)], [the same with the factor uncompressed], [$10^(-9)$], [EMCraft's test `a_compressed_factor_gives_the_exact_ones_s_parameters`])
+
+#check([the whole oven's solutions], [backward errors $3.9 times 10^(-18)$, $3.8 times 10^(-16)$, $1.8 times 10^(-17)$], [0 (the exact solution)], [$10^(-12)$], [EMCraft's solve report (`backward_error`)])
+
+The mesh was checked on the previous version's half model by solving it with 4 and 5 elements per wavelength (second order, `results/half-model/`).
+The means agree within 10 % for every door; the maxima, single points, move by up to 30 %. The whole oven here is solved with 4 elements per wavelength.
+The differences between the three doors (a factor of 2 to four orders of magnitude) are larger than this spread.
 
 #table(columns: 5, align: (left, right, right, right, right),
-  [*構造*], [*最大 4 要素*], [*最大 5 要素*], [*平均 4 要素*], [*平均 5 要素*],
-  [チョークなし], [1.51], [1.77], [0.386], [0.386],
-  [単純なリング溝], [34.2], [33.9], [4.76], [4.69],
-  [スリット付き], [0.0027], [0.0021], [0.00042], [0.00038],
+  [*Door (half model)*], [*Max, 4 per λ*], [*Max, 5 per λ*], [*Mean, 4 per λ*], [*Mean, 5 per λ*],
+  [no choke], [1.51], [1.77], [0.386], [0.386],
+  [ring groove], [34.2], [33.9], [4.76], [4.69],
+  [slotted choke], [0.0027], [0.0021], [0.00042], [0.00038],
 )
 
-= まとめ
+= Conclusions
 
-- 2 mm の隙間を対策なしで開けたドアでも、5 cm 前の漏洩は最大 1.8 mW/cm² で、基準 5 mW/cm² を下回る。ただし出荷時の 1 mW/cm² は超える。
-- 教科書どおりの $lambda\/4$ の溝を一周させるだけでは、漏洩はかえって増える（最大 34 mW/cm²）。隙間の場が縁に沿って変化し、溝が $lambda\/4$ として働かないうえ、溝が縁に沿って共振するためである。
-- 溝を折り返し、リップにスリットを切ると（実際の製品の構造）、漏洩は 0.002 mW/cm² まで下がる。
-- ドアのパンチングメタルからの漏れは、本版では扱っていない。
+- A door over a plain 2 mm gap leaks up to 69 mW/cm² at 5 cm, 14 times the 5 mW/cm² limit. The leak comes from the door's edges, above all the seam beside the control panel.
+- A textbook $lambda\/4$ groove round the door makes the leak worse (up to 142 mW/cm²): the field in the gap varies along the rim, so the groove does not act as $lambda\/4$, and the groove resonates along the rim.
+- Folding the groove and slotting its lip (the structure of real ovens) brings the leak down to 0.008 mW/cm², about 600 times below the limit.
+- Leakage through the door's perforated screen is not covered: this version treats the window as a metal plate.
 
-本書はシミュレーションによる設計検討であり、製品の認証試験ではない。
+This is a simulation study of a design, not a certification test of a product.

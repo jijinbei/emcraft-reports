@@ -63,37 +63,145 @@
     {
       "command": "parameters.add",
       "params": {
-        "name": "lw",
+        "name": "cw",
+        "expression": "130",
+        "unit": "mm",
+        "comment": "control compartment's width, right of the cavity (x)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gb",
+        "expression": "86",
+        "unit": "mm",
+        "comment": "waveguide's broad side (y): TE10 cut off at 1.74 GHz"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gn",
+        "expression": "43",
+        "unit": "mm",
+        "comment": "waveguide's narrow side (x)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gy",
+        "expression": "195",
+        "unit": "mm",
+        "comment": "waveguide's centre (y), behind the cavity's middle"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gs",
+        "expression": "5",
+        "unit": "mm",
+        "comment": "wall between the cavity and the waveguide"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "gz",
+        "expression": "20",
+        "unit": "mm",
+        "comment": "waveguide's shorted bottom end (z)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "ga",
         "expression": "60",
         "unit": "mm",
-        "comment": "each water load's side"
+        "comment": "feed aperture's height (z), at the guide's top end, through the cavity's right wall"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "tr",
+        "expression": "140",
+        "unit": "mm",
+        "comment": "turntable's radius"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "tt",
+        "expression": "6",
+        "unit": "mm",
+        "comment": "turntable's thickness"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "tz",
+        "expression": "12",
+        "unit": "mm",
+        "comment": "turntable's height above the floor, on its roller ring"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "br",
+        "expression": "42.5",
+        "unit": "mm",
+        "comment": "the load's radius: IEC 60335-2-25's beaker, about 85 mm across"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "bw",
+        "expression": "2",
+        "unit": "mm",
+        "comment": "the beaker's glass bottom, left out: the water stands this high above the plate"
       }
     },
     {
       "command": "parameters.add",
       "params": {
         "name": "lh",
-        "expression": "38.2",
+        "expression": "48.5",
         "unit": "mm",
-        "comment": "each water load's height: 137.5 ml, two of them 275 ml"
+        "comment": "water's depth: 275 ml in the beaker"
       }
     },
     {
       "command": "parameters.add",
       "params": {
-        "name": "lx",
-        "expression": "50",
+        "name": "ww",
+        "expression": "220",
         "unit": "mm",
-        "comment": "each water load's centre from the middle plane x = a/2"
+        "comment": "door window's width (x)"
       }
     },
     {
       "command": "parameters.add",
       "params": {
-        "name": "lz",
-        "expression": "15",
+        "name": "wh",
+        "expression": "150",
         "unit": "mm",
-        "comment": "water load's height above the floor: where a turntable holds it"
+        "comment": "door window's height (z)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "wd",
+        "expression": "12",
+        "unit": "mm",
+        "comment": "door window's depth into the door's outer face: the screen at its bottom"
       }
     },
     {
@@ -144,7 +252,7 @@
     {
       "command": "solid.box",
       "params": {
-        "length": "a + 2*w",
+        "length": "a + w + cw",
         "width": "d + w",
         "height": "h + 2*w",
         "corner": [
@@ -165,6 +273,57 @@
           "0",
           "-1 mm",
           "0"
+        ],
+        "operation": "cut",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "cw - w - g",
+        "width": "g + t",
+        "height": "h + 2*w",
+        "corner": [
+          "a + w + g",
+          "-g - t",
+          "-w"
+        ],
+        "operation": "join",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "gn",
+        "width": "gb",
+        "height": "h - gz",
+        "corner": [
+          "a + gs",
+          "gy - gb/2",
+          "gz"
+        ],
+        "operation": "cut",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "gs + 2 mm",
+        "width": "gb",
+        "height": "ga",
+        "corner": [
+          "a - 1 mm",
+          "gy - gb/2",
+          "h - ga"
         ],
         "operation": "cut",
         "targets": [
@@ -1251,31 +1410,32 @@
     {
       "command": "solid.box",
       "params": {
-        "length": "lw",
-        "width": "lw",
-        "height": "lh",
+        "length": "ww",
+        "width": "wd + 1 mm",
+        "height": "wh",
         "corner": [
-          "a/2 - lx - lw/2",
-          "d/2 - lw/2",
-          "lz"
+          "a/2 - ww/2",
+          "-g - t - 1 mm",
+          "h/2 - wh/2"
         ],
-        "operation": "new_body",
-        "body_name": "water"
+        "operation": "cut",
+        "targets": [
+          "door"
+        ]
       }
     },
     {
-      "command": "solid.box",
+      "command": "solid.move",
       "params": {
-        "length": "lw",
-        "width": "lw",
-        "height": "lh",
-        "corner": [
-          "a/2 + lx - lw/2",
-          "d/2 - lw/2",
-          "lz"
+        "bodies": [
+          "shell",
+          "door"
         ],
-        "operation": "new_body",
-        "body_name": "water2"
+        "translate": [
+          "105",
+          "162",
+          "105"
+        ]
       }
     }
   ]
