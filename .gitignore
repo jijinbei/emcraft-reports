@@ -3,3 +3,4 @@ scripts/cell/*.solidcraft
 *.bak
 *.err
 __pycache__/
+*.pdf

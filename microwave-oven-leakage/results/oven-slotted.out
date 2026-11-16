@@ -94,10 +94,10 @@
         "re": 0.6801889471145927
       },
       "seconds": {
-        "analysis": 21.824725845,
-        "assembly": 1.177574744,
-        "factor": 80.284157698,
-        "solve": 32.37341657
+        "analysis": 22.20948349,
+        "assembly": 1.208349691,
+        "factor": 77.929968439,
+        "solve": 37.607105196
       }
     }
   ],
@@ -6457,6 +6457,16 @@
 {
   "height": 1010,
   "path": "../results/oven-slotted-cross-leak.png",
+  "width": 1100
+}
+{
+  "height": 1210,
+  "path": "../results/oven-slotted-front-rim.png",
+  "width": 1100
+}
+{
+  "height": 1210,
+  "path": "../results/oven-slotted-front-5cm.png",
   "width": 1100
 }
 {

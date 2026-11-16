@@ -1192,5 +1192,29 @@
    "width": 1100,
    "clamp": 10
   }
+ },
+ {
+  "command": "view.field",
+  "params": {
+   "path": "../results/oven-slotted-front-rim.png",
+   "frequency": 2.45,
+   "plane": "h",
+   "at": 88,
+   "component": "|e|",
+   "clamp": 3,
+   "width": 1100
+  }
+ },
+ {
+  "command": "view.field",
+  "params": {
+   "path": "../results/oven-slotted-front-5cm.png",
+   "frequency": 2.45,
+   "plane": "h",
+   "at": 40,
+   "component": "|e|",
+   "clamp": 3,
+   "width": 1100
+  }
  }
 ]

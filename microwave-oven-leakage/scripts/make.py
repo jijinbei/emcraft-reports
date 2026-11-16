@@ -37,6 +37,12 @@ def script(name):
         {"command": "view.field", "params": {"path": f"../results/{name}-{plane}{tag}.png", "frequency": 2.45, "plane": plane,
                                              "component": "|e|", "width": 1100, **clamp}}
         for plane in ("h", "e", "cross") for tag, clamp in (("", {}), ("-leak", {"clamp": 10}))
+    ] + [
+        # Facing the door: |E| on planes across y just outside its front face and 5 cm out — where
+        # round the rim the field comes out.
+        {"command": "view.field", "params": {"path": f"../results/{name}-front-{tag}.png", "frequency": 2.45, "plane": "h",
+                                             "at": SHIFT[1] - G - T - off, "component": "|e|", "clamp": 3, "width": 1100}}
+        for tag, off in (("rim", 2), ("5cm", 50))
     ]
 
 for name in ("oven-gap", "oven-choke", "oven-slotted"):

@@ -94,10 +94,10 @@
         "re": 0.687584343198297
       },
       "seconds": {
-        "analysis": 15.987615324,
-        "assembly": 1.058054636,
-        "factor": 67.027070541,
-        "solve": 14.428590161
+        "analysis": 16.492710412,
+        "assembly": 1.121408596,
+        "factor": 71.759500698,
+        "solve": 28.805866488
       }
     }
   ],
@@ -6457,6 +6457,16 @@
 {
   "height": 1010,
   "path": "../results/oven-gap-cross-leak.png",
+  "width": 1100
+}
+{
+  "height": 1210,
+  "path": "../results/oven-gap-front-rim.png",
+  "width": 1100
+}
+{
+  "height": 1210,
+  "path": "../results/oven-gap-front-5cm.png",
   "width": 1100
 }
 {

@@ -94,10 +94,10 @@
         "re": 0.4399207828071682
       },
       "seconds": {
-        "analysis": 16.904302728,
-        "assembly": 1.102241034,
-        "factor": 70.23755002,
-        "solve": 17.063086012
+        "analysis": 17.383001218,
+        "assembly": 1.18771632,
+        "factor": 71.566103105,
+        "solve": 30.69522664
       }
     }
   ],
@@ -6457,6 +6457,16 @@
 {
   "height": 1010,
   "path": "../results/oven-choke-cross-leak.png",
+  "width": 1100
+}
+{
+  "height": 1210,
+  "path": "../results/oven-choke-front-rim.png",
+  "width": 1100
+}
+{
+  "height": 1210,
+  "path": "../results/oven-choke-front-5cm.png",
   "width": 1100
 }
 {
