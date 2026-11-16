@@ -1,0 +1,41 @@
+{
+ "commands": [
+  {
+   "command": "file.new",
+   "params": {
+    "name": "groove 300"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "2",
+    "width": "300",
+    "height": "86",
+    "corner": [
+     "0",
+     "0",
+     "0"
+    ],
+    "body_name": "air"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "30",
+    "width": "300",
+    "height": "6",
+    "corner": [
+     "2",
+     "0",
+     "40"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  }
+ ]
+}

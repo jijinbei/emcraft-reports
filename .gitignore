@@ -1,0 +1,5 @@
+scripts/cell/*.solidcraft
+*.ppm
+*.bak
+*.err
+__pycache__/

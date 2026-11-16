@@ -1,0 +1,347 @@
+{
+ "commands": [
+  {
+   "command": "file.new",
+   "params": {
+    "name": "slotted 300"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "2",
+    "width": "300",
+    "height": "86",
+    "corner": [
+     "0",
+     "0",
+     "0"
+    ],
+    "body_name": "air"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "300",
+    "height": "4",
+    "corner": [
+     "2",
+     "0",
+     "36"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "4",
+    "width": "300",
+    "height": "30",
+    "corner": [
+     "3",
+     "0",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "7.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "25.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "43.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "61.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "79.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "97.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "115.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "133.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "151.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "169.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "187.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "205.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "223.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "241.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "259.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "277.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "2.5",
+    "height": "26",
+    "corner": [
+     "2",
+     "295.75",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  }
+ ]
+}

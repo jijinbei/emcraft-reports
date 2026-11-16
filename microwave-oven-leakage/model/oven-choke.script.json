@@ -1,0 +1,263 @@
+{
+  "commands": [
+    {
+      "command": "file.new",
+      "params": {
+        "name": "Microwave oven with choke"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "a",
+        "expression": "330",
+        "unit": "mm",
+        "comment": "cavity width (x)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "d",
+        "expression": "330",
+        "unit": "mm",
+        "comment": "cavity depth (y), door at y = 0"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "h",
+        "expression": "210",
+        "unit": "mm",
+        "comment": "cavity height (z)"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "w",
+        "expression": "45",
+        "unit": "mm",
+        "comment": "wall, and the flange the door rests on"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "g",
+        "expression": "2",
+        "unit": "mm",
+        "comment": "gap between door and flange"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "t",
+        "expression": "40",
+        "unit": "mm",
+        "comment": "door thickness"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "lw",
+        "expression": "60",
+        "unit": "mm",
+        "comment": "each water load's side"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "lh",
+        "expression": "38.2",
+        "unit": "mm",
+        "comment": "each water load's height: 137.5 ml, two of them 275 ml"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "lx",
+        "expression": "50",
+        "unit": "mm",
+        "comment": "each water load's centre from the middle plane x = a/2"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "lz",
+        "expression": "15",
+        "unit": "mm",
+        "comment": "water load's height above the floor: where a turntable holds it"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "fs",
+        "expression": "8.5",
+        "unit": "mm",
+        "comment": "slotted choke: where its channel's shorted end and the lip start, out from the cavity's edge"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "fl",
+        "expression": "36",
+        "unit": "mm",
+        "comment": "slotted choke: where the lip ends and the channel opens to the gap"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "cs",
+        "expression": "6",
+        "unit": "mm",
+        "comment": "choke groove's width"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "cl",
+        "expression": "30",
+        "unit": "mm",
+        "comment": "choke groove's distance from the cavity's edge: about a quarter wavelength"
+      }
+    },
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "cd",
+        "expression": "30",
+        "unit": "mm",
+        "comment": "choke groove's depth: about a quarter wavelength"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*w",
+        "width": "d + w",
+        "height": "h + 2*w",
+        "corner": [
+          "-w",
+          "0",
+          "-w"
+        ],
+        "body_name": "shell"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a",
+        "width": "d + 1 mm",
+        "height": "h",
+        "corner": [
+          "0",
+          "-1 mm",
+          "0"
+        ],
+        "operation": "cut",
+        "targets": [
+          "shell"
+        ]
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*w",
+        "width": "t",
+        "height": "h + 2*w",
+        "corner": [
+          "-w",
+          "-g - t",
+          "-w"
+        ],
+        "operation": "new_body",
+        "body_name": "door"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*cl + cs",
+        "width": "cd",
+        "height": "h + 2*cl + cs",
+        "corner": [
+          "-cl - cs/2",
+          "-g - cd",
+          "-cl - cs/2"
+        ],
+        "operation": "new_body",
+        "body_name": "groove"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "a + 2*cl - cs",
+        "width": "cd + 2 mm",
+        "height": "h + 2*cl - cs",
+        "corner": [
+          "-cl + cs/2",
+          "-g - cd - 1 mm",
+          "-cl + cs/2"
+        ],
+        "operation": "cut",
+        "targets": [
+          "groove"
+        ]
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "door",
+        "tools": [
+          "groove"
+        ],
+        "operation": "cut"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "lw",
+        "width": "lw",
+        "height": "lh",
+        "corner": [
+          "a/2 - lx - lw/2",
+          "d/2 - lw/2",
+          "lz"
+        ],
+        "operation": "new_body",
+        "body_name": "water"
+      }
+    },
+    {
+      "command": "solid.box",
+      "params": {
+        "length": "lw",
+        "width": "lw",
+        "height": "lh",
+        "corner": [
+          "a/2 + lx - lw/2",
+          "d/2 - lw/2",
+          "lz"
+        ],
+        "operation": "new_body",
+        "body_name": "water2"
+      }
+    }
+  ]
+}

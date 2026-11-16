@@ -1,0 +1,58 @@
+{
+ "commands": [
+  {
+   "command": "file.new",
+   "params": {
+    "name": "folded 80"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "2",
+    "width": "80",
+    "height": "86",
+    "corner": [
+     "0",
+     "0",
+     "0"
+    ],
+    "body_name": "air"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "1",
+    "width": "80",
+    "height": "4",
+    "corner": [
+     "2",
+     "0",
+     "36"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "4",
+    "width": "80",
+    "height": "30",
+    "corner": [
+     "3",
+     "0",
+     "10"
+    ],
+    "operation": "join",
+    "targets": [
+     "air"
+    ]
+   }
+  }
+ ]
+}
