@@ -8,3 +8,11 @@ __pycache__/
 # them) and the snapshots results/model.png and doors-cad.png are put together from.
 microwave-oven-leakage/results/real/*.csv
 microwave-oven-leakage/results/model-parts/
+# The BWO runs' particles, fields and histories (up to 66 MB each; scripts/figures.py draws the
+# pictures and animations from them), the scans' logs and the SolidCraft snapshots.
+relativistic-bwo/results/*.csv
+relativistic-bwo/results/*.log
+relativistic-bwo/results/*.scan
+relativistic-bwo/results/*.done
+relativistic-bwo/results/model-parts/
+relativistic-bwo/scripts/__pycache__/

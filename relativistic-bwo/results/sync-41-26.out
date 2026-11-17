@@ -1,0 +1,265 @@
+{
+  "volume": 0.001773893857109939
+}
+{
+  "chosen": true,
+  "kind": "particles",
+  "solve": "solve.particles"
+}
+{
+  "beams": [],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [],
+  "plasmas": [],
+  "probes": [],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.024,
+      "per_step": 16,
+      "radius": 0.026000000000000002,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [],
+  "plasmas": [],
+  "probes": [],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.024,
+      "per_step": 16,
+      "radius": 0.026000000000000002,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [
+    "z+"
+  ],
+  "plasmas": [],
+  "probes": [],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.024,
+      "per_step": 16,
+      "radius": 0.026000000000000002,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [
+    "z+"
+  ],
+  "plasmas": [],
+  "probes": [
+    [
+      33.0,
+      0.0,
+      147.5
+    ]
+  ],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.024,
+      "per_step": 16,
+      "radius": 0.026000000000000002,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [
+    "z+"
+  ],
+  "plasmas": [],
+  "probes": [
+    [
+      33.0,
+      0.0,
+      147.5
+    ]
+  ],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "cell": [
+    1.5,
+    1.5,
+    0.1875
+  ],
+  "cells": [
+    60,
+    60,
+    2144
+  ],
+  "device": "cpu",
+  "dt": 5.895728597335896e-13,
+  "emitted": -6874.999999997808,
+  "energy": {
+    "field": 6367.432126737804,
+    "kinetic": 3.81057695201008
+  },
+  "fastest_ev": 771493.7087782063,
+  "gamma_max": 2.5097755265133075,
+  "growth_rate": null,
+  "loss_factor_v_per_pc": null,
+  "lost": 0,
+  "metal": 0.0,
+  "mid_gamma": 1.351854452107285,
+  "outputs": [
+    {
+      "at": 370.0,
+      "efficiency": 0.05092201964417021,
+      "oscillating_w": 192548886.7795186,
+      "power_w": 1741764760.4215434,
+      "steady_w": 1549215873.6420248
+    }
+  ],
+  "particles": 60781,
+  "precision": "double",
+  "probes": [
+    {
+      "at": [
+        33.0,
+        0.0,
+        147.5
+      ],
+      "frequency": 3.597982988885745
+    }
+  ],
+  "steps": 101769,
+  "time_ns": 60.00024036222768,
+  "walls": {
+    "z+": {
+      "current": -6026.1803576697375,
+      "density": -947255.6956902959
+    },
+    "z-": {
+      "current": -848.4396494545085,
+      "density": -133366.28555638512
+    }
+  }
+}
+{
+  "path": "../results/sync-41-26-history.csv",
+  "rows": 1996,
+  "what": "history"
+}
+{
+  "path": "../results/sync-41-26-probes.csv",
+  "rows": 16961,
+  "what": "probes"
+}
+{
+  "path": "../results/sync-41-26-phase.csv",
+  "rows": 15196,
+  "what": "particles"
+}
+{
+  "analysis": {
+    "chosen": true,
+    "kind": "particles",
+    "solve": "solve.particles"
+  },
+  "eigenmodes": null,
+  "materials": [
+    {
+      "eps_r": 1.0,
+      "loss_tangent": 0.0,
+      "magnetic_loss_tangent": 0.0,
+      "mu_r": 1.0,
+      "name": "vacuum"
+    }
+  ],
+  "mesh": null,
+  "pcb": null,
+  "ports": [],
+  "results": null,
+  "solid": {
+    "material": "vacuum",
+    "shape": "Surface"
+  },
+  "units": {
+    "frequency": "GHz",
+    "length": "mm"
+  },
+  "waveguide": null
+}

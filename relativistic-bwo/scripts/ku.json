@@ -1,0 +1,40 @@
+[
+ {
+  "command": "file.sample",
+  "params": {
+   "name": "relativistic-bwo"
+  }
+ },
+ {
+  "command": "particles.output",
+  "params": {
+   "at": 140
+  }
+ },
+ {
+  "command": "solve.particles",
+  "params": {
+   "time": 50
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/ku-history.csv"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/ku-probes.csv",
+   "what": "probes"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/ku-phase.csv",
+   "what": "particles"
+  }
+ }
+]

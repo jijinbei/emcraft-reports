@@ -1,0 +1,106 @@
+[
+ {
+  "command": "geometry.import",
+  "params": {
+   "path": "../model/ku.sc",
+   "materials": {
+    "vacuum": "interior"
+   }
+  }
+ },
+ {
+  "command": "project.analysis",
+  "params": {
+   "kind": "particles"
+  }
+ },
+ {
+  "command": "particles.magnetic",
+  "params": {
+   "b": [
+    0,
+    0,
+    5
+   ],
+   "end": 140,
+   "fall": 3
+  }
+ },
+ {
+  "command": "particles.beam",
+  "params": {
+   "face": "z-",
+   "current": 1500,
+   "energy": 552495.7,
+   "radius": 11,
+   "inner": 9,
+   "rise": 1000
+  }
+ },
+ {
+  "command": "particles.open",
+  "params": {
+   "face": "z+"
+  }
+ },
+ {
+  "command": "particles.probe",
+  "params": {
+   "at": [
+    12.5,
+    0,
+    22
+   ]
+  }
+ },
+ {
+  "command": "particles.output",
+  "params": {
+   "at": 170
+  }
+ },
+ {
+  "command": "solve.particles",
+  "params": {
+   "time": 100,
+   "cell": 0.5,
+   "axisymmetric": true,
+   "fine": 4,
+   "frames": 30
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/final-ku-history.csv"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/final-ku-probes.csv",
+   "what": "probes"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/final-ku-particles.csv",
+   "what": "particles"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/final-ku-frames.csv",
+   "what": "frames"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/final-ku-maps.csv",
+   "what": "maps"
+  }
+ }
+]
