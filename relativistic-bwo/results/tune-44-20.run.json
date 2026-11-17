@@ -1,0 +1,17 @@
+{
+ "run": "tune-44-20",
+ "script": "scripts/tune-44-20.json",
+ "script_sha256": "c93e57344fbb8be272df324a4c29c145876710ee9d2f796c8136e52dccecee03",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1745551030.6509972,
+  "efficiency": 0.18034619255468362,
+  "current_z+_a": -5761.5172702997315,
+  "current_z-_a": -1107.3024838874824,
+  "mid_gamma": 1.3879551829536927,
+  "time_ns": 60.000325851431334,
+  "particles": 66784
+ }
+}

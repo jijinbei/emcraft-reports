@@ -1,0 +1,17 @@
+{
+ "run": "ends-30-28",
+ "script": "scripts/ends-30-28.json",
+ "script_sha256": "328b0ad2cc5b9fdab4c0d5791f5450ea2f43215834da6164f2fe5b1e0eb4c619",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1721753830.8739235,
+  "efficiency": 0.04889281241967691,
+  "current_z+_a": -6002.570133635082,
+  "current_z-_a": -874.4311621792368,
+  "mid_gamma": 1.4989662430517223,
+  "time_ns": 60.00024036222768,
+  "particles": 67443
+ }
+}

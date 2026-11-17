@@ -1,0 +1,17 @@
+{
+ "run": "taper-last",
+ "script": "scripts/taper-last.json",
+ "script_sha256": "0b74ec02aa50daf4eab1f4ca16c8b4f35c3bddef42f7ce8e729c64c4614460c2",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1651508211.629743,
+  "efficiency": 0.15647348089350915,
+  "current_z+_a": -5734.75959885081,
+  "current_z-_a": -1139.049756804539,
+  "mid_gamma": 1.3586161229836917,
+  "time_ns": 60.00024036222768,
+  "particles": 70607
+ }
+}

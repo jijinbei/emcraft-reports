@@ -1,0 +1,17 @@
+{
+ "run": "sync-47-26",
+ "script": "scripts/sync-47-26.json",
+ "script_sha256": "e9ce3ca67df08c2e7a64a9f87d2b2428df98cf122d0968c1ae6a76ff20dafa07",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1758788221.991836,
+  "efficiency": 0.05720449848143649,
+  "current_z+_a": -6015.143675690655,
+  "current_z-_a": -868.9930419080624,
+  "mid_gamma": 1.732742697209284,
+  "time_ns": 60.00024036222768,
+  "particles": 65087
+ }
+}

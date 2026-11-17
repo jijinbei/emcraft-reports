@@ -1,0 +1,17 @@
+{
+ "run": "refine-two-deep-44",
+ "script": "scripts/refine-two-deep-44.json",
+ "script_sha256": "7ad65be6bef14b24e1dafff5450c265e102fa7f4f1726badab19da01f5f5c446",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 415723183.3297607,
+  "efficiency": 0.10994295612889553,
+  "current_z+_a": 0.0,
+  "current_z-_a": -266.2652304215851,
+  "mid_gamma": 1.5349466670758165,
+  "time_ns": 60.00024036222768,
+  "particles": 39462
+ }
+}

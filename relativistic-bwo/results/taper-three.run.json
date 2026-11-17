@@ -1,0 +1,17 @@
+{
+ "run": "taper-three",
+ "script": "scripts/taper-three.json",
+ "script_sha256": "f94b2c00cd4a7dd20ea5f1e748985f375332074d545668131aad8d53113f8e86",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1398570423.8452976,
+  "efficiency": 0.07993501487344379,
+  "current_z+_a": -5903.282217255066,
+  "current_z-_a": -959.2624606954913,
+  "mid_gamma": 1.3966585154062972,
+  "time_ns": 60.00024036222768,
+  "particles": 66172
+ }
+}

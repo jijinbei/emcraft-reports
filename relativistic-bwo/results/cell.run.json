@@ -1,0 +1,11 @@
+{
+ "run": "cell",
+ "script": "scripts/cell.json",
+ "script_sha256": "f5b765512f077674ca7d783161b0fdb4662a9ecc87c440e7f7cb372c47d070d4",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "unknowns": 3229
+ }
+}

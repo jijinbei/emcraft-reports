@@ -1,0 +1,11 @@
+{
+ "run": "cell/folded-80-fs10",
+ "script": "scripts/cell/folded-80-fs10.json",
+ "script_sha256": "71cbe780c80ab89506c84e9cff2e930a0a8cfa8fe3c22b35263c3b1228564f3e",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0)",
+ "adopted": true,
+ "summary": {
+  "unknowns": 29326
+ }
+}

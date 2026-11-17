@@ -1,0 +1,17 @@
+{
+ "run": "collect-flat-275",
+ "script": "scripts/collect-flat-275.json",
+ "script_sha256": "70aaeb0215af4fcf6178f6739e93873e9e8396d32c2e0e4e1df24a1293d84e46",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 576853303.3870723,
+  "efficiency": 0.15255570784703626,
+  "current_z+_a": 0.0,
+  "current_z-_a": -698.5282376927494,
+  "mid_gamma": 1.668483927259672,
+  "time_ns": 60.00024036222768,
+  "particles": 38137
+ }
+}

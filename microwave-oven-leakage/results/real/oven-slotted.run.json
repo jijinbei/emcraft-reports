@@ -1,0 +1,11 @@
+{
+ "run": "oven-slotted",
+ "script": "scripts/oven-slotted.json",
+ "script_sha256": "aa17fc26dcc81857a627caa864c656130550149a9d57e6168c155f414c1d5d0d",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0)",
+ "adopted": true,
+ "summary": {
+  "unknowns": 2313306
+ }
+}

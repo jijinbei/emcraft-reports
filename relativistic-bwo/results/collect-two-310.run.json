@@ -1,0 +1,17 @@
+{
+ "run": "collect-two-310",
+ "script": "scripts/collect-two-310.json",
+ "script_sha256": "4c3d5f13e0a2ff9eb302acdc703c2d1c7e46bbe7b0c914b0ba78aad491573357",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 505422915.8677657,
+  "efficiency": 0.13365877744824967,
+  "current_z+_a": 0.0,
+  "current_z-_a": -482.54028692152326,
+  "mid_gamma": 1.5818856915269703,
+  "time_ns": 60.00024036222768,
+  "particles": 41677
+ }
+}

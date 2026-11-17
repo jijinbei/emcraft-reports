@@ -1,0 +1,11 @@
+{
+ "run": "cell/slotted-80-fs10",
+ "script": "scripts/cell/slotted-80-fs10.json",
+ "script_sha256": "fdaf3d7b95c745a5709d946ba9422e57a3fcffcecfa51d2db07152b385965248",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0)",
+ "adopted": true,
+ "summary": {
+  "unknowns": 39356
+ }
+}

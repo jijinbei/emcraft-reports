@@ -1,0 +1,17 @@
+{
+ "run": "scan-45-26",
+ "script": "scripts/scan-45-26.json",
+ "script_sha256": "fffb9357153e65c1fbac79045de665fd1eb40433e7cdc4230485cca76a30235c",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1858968010.7328389,
+  "efficiency": 0.052587089472336826,
+  "current_z+_a": -6201.373962120896,
+  "current_z-_a": -651.0629053256761,
+  "mid_gamma": 1.7949259212160067,
+  "time_ns": 60.00024036222768,
+  "particles": 65889
+ }
+}

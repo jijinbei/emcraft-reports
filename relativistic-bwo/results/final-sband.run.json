@@ -1,0 +1,17 @@
+{
+ "run": "final-sband",
+ "script": "scripts/final-sband.json",
+ "script_sha256": "70731f2210738ca6150d6486d69cab404a9c527c71db201b58b0a3dd4394b9f8",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 642835705.431432,
+  "efficiency": 0.17000625040242992,
+  "current_z+_a": 0.0,
+  "current_z-_a": -409.3367704137237,
+  "mid_gamma": 1.5837877204830162,
+  "time_ns": 60.000240362227686,
+  "particles": 39260
+ }
+}

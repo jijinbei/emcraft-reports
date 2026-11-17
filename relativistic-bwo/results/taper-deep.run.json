@@ -1,0 +1,17 @@
+{
+ "run": "taper-deep",
+ "script": "scripts/taper-deep.json",
+ "script_sha256": "58b11a9ede4b91f2b00dd4bdd3b9ee820d92d85fc911bc2d093501402c8ee3c8",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1317666545.7437959,
+  "efficiency": 0.07371244486325818,
+  "current_z+_a": -5778.21389530357,
+  "current_z-_a": -1062.6289672790433,
+  "mid_gamma": 1.3333176402621771,
+  "time_ns": 60.00024036222768,
+  "particles": 68940
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "run": "ku",
+ "script": "scripts/ku.json",
+ "script_sha256": "155aeb873dea413d656d0da5fa0b0af003120a3ac6145be02fd332d57e9296a3",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 175405431.73905432,
+  "efficiency": 0.1245984724669215,
+  "current_z+_a": -1500.616975474753,
+  "current_z-_a": -0.00288306296609518,
+  "mid_gamma": 1.8765345083977887,
+  "time_ns": 50.000144299245385,
+  "particles": 26255
+ }
+}

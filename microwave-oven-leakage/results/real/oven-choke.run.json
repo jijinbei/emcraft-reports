@@ -1,0 +1,11 @@
+{
+ "run": "oven-choke",
+ "script": "scripts/oven-choke.json",
+ "script_sha256": "8b2318f55af44825c9ba2a5a3da1ef98625a292f99ab87b9b0256ec720946c71",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0)",
+ "adopted": true,
+ "summary": {
+  "unknowns": 2038544
+ }
+}

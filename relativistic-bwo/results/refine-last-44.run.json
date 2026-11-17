@@ -1,0 +1,17 @@
+{
+ "run": "refine-last-44",
+ "script": "scripts/refine-last-44.json",
+ "script_sha256": "1c57767ce1b7f25477bd8c86dfab61bf833c37af2a4698a8e8f76a150dc6d6ad",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 625354917.5254728,
+  "efficiency": 0.1653834448121315,
+  "current_z+_a": 0.0,
+  "current_z-_a": -571.669727080665,
+  "mid_gamma": 1.5762081076329602,
+  "time_ns": 60.00024036222768,
+  "particles": 39716
+ }
+}

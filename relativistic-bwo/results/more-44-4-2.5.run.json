@@ -1,0 +1,17 @@
+{
+ "run": "more-44-4-2.5",
+ "script": "scripts/more-44-4-2.5.json",
+ "script_sha256": "51c46e36c88d3cc2f946d7c798220e6ab82668d44beb9f5c723d321b702eb9da",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1276721227.188337,
+  "efficiency": 0.07125854317319974,
+  "current_z+_a": -5566.613555507304,
+  "current_z-_a": -1283.0153215661642,
+  "mid_gamma": 1.33621636429909,
+  "time_ns": 60.00044568511055,
+  "particles": 60554
+ }
+}

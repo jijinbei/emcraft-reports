@@ -1,0 +1,11 @@
+{
+ "run": "cell/groove-80-fs10",
+ "script": "scripts/cell/groove-80-fs10.json",
+ "script_sha256": "3711bd72ff50c589a594f5056b55e8d575867b71322799152d6bf7cf86c156f1",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0)",
+ "adopted": true,
+ "summary": {
+  "unknowns": 19076
+ }
+}

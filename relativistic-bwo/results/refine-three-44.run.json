@@ -1,0 +1,17 @@
+{
+ "run": "refine-three-44",
+ "script": "scripts/refine-three-44.json",
+ "script_sha256": "5b44b2ec7ac36fcd6d993f51456f6b5646cb76fd1bc33cd18c9daf7a9579d9aa",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 59657323.3503291,
+  "efficiency": 0.015776754070804557,
+  "current_z+_a": 0.0,
+  "current_z-_a": -5.22701311781468,
+  "mid_gamma": 1.6071076387851064,
+  "time_ns": 60.00024036222768,
+  "particles": 35192
+ }
+}

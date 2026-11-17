@@ -3,16 +3,14 @@ running from the cavity (port 1) out past the choke (port 2), b wide along the d
 conducting walls there — so the wave in the gap goes as sin(πy/b) along the rim, as the oven's
 gap field varies round the door (b = 300 mm nearly uniform, b = 80 mm strongly varying).
 
-Builds each cell in SolidCraft, solves it with EMCraft and writes results/cell/<name>.out;
-prints |S21| (dB) at 2.45 GHz and the notch. A plain groove's |S21| is checked against the
+`cell.py write` writes each cell's scripts (report.py builds and solves them into
+results/cell/<name>.out); `cell.py` prints |S21| (dB) at 2.45 GHz and the notch. A plain groove's |S21| is checked against the
 series-stub transmission line (the reference, computed here independently)."""
-import json, math, os, subprocess, sys
+import json, math, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "results", "cell")
 WORK = os.path.join(HERE, "cell")
-EMCRAFT = os.environ.get("EMCRAFT_CLI", "emcraft-cli")
-SOLIDCRAFT = ["flatpak", "run", f"--filesystem={WORK}", "--command=solidcraft-cli", "io.tangencylabs.solidcraft"]
 C0 = 299792458.0
 
 def box(l, w, h, c, **kw):
@@ -54,13 +52,12 @@ def stub(f_ghz, b, depth=0.030, gap=0.002, width=0.006):
 CASES = [("groove", 300, 10), ("groove", 80, 10), ("folded", 300, 10), ("folded", 80, 10),
          ("slotted", 300, 10), ("slotted", 80, 10), ("slotted", 300, 8.5), ("slotted", 80, 8.5)]
 
-if __name__ == "__main__":
-    os.makedirs(WORK, exist_ok=True); os.makedirs(OUT, exist_ok=True)
-    for kind, b, fs in CASES:
-        name = f"{kind}-{b}-fs{fs}"
-        design = os.path.join(WORK, name + ".solidcraft")
+def write():
+    """Each cell's SolidCraft script and EMCraft script into scripts/cell/ (report.py builds and
+    solves them)."""
+    os.makedirs(WORK, exist_ok=True)
+    for name, kind, b, fs in names():
         json.dump(cell(kind, b, fs), open(os.path.join(WORK, name + ".script.json"), "w"), indent=1)
-        subprocess.run(SOLIDCRAFT + ["run", os.path.join(WORK, name + ".script.json"), "--save", design], check=True, capture_output=True)
         run = [{"command": "geometry.import", "params": {"path": name + ".solidcraft", "region": "air"}},
                {"command": "mesh.generate", "params": {"size": 5}},
                {"command": "model.port.create", "params": {"name": "1", "end": "start"}},
@@ -68,11 +65,21 @@ if __name__ == "__main__":
                {"command": "solve.frequency", "params": {"start": 2.0, "stop": 3.4, "points": 29, "order": 2}},
                {"command": "results.sparameters", "params": {}}]
         json.dump(run, open(os.path.join(WORK, name + ".json"), "w"))
-        out = os.path.join(OUT, name + ".out")
-        with open(out, "w") as f:
-            subprocess.run([EMCRAFT, "run", name + ".json"], cwd=WORK, stdout=f, stderr=subprocess.STDOUT, check=True)
-        rows = s21(out)
+
+
+def names():
+    return [(f"{kind}-{b}-fs{fs}", kind, b, fs) for kind, b, fs in CASES]
+
+
+def table():
+    """|S21| at 2.45 GHz and the notch of each solved cell; a groove's against the stub model."""
+    for name, kind, b, fs in names():
+        rows = s21(os.path.join(OUT, name + ".out"))
         at = min(rows, key=lambda r: abs(r[0] - 2.45))[1]
         notch = min(rows, key=lambda r: r[1])
         ref = "" if kind != "groove" else f"  stub model at 2.45: {stub(2.45, b / 1000):6.1f} dB"
         print(f"{name:20s} |S21| at 2.45 GHz {at:6.1f} dB, notch {notch[1]:6.1f} dB at {notch[0]:.2f} GHz{ref}", flush=True)
+
+
+if __name__ == "__main__":
+    write() if sys.argv[1:] == ["write"] else table()

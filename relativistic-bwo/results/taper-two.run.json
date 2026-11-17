@@ -1,0 +1,17 @@
+{
+ "run": "taper-two",
+ "script": "scripts/taper-two.json",
+ "script_sha256": "56b51cdb94380b5ff9a3a70996d1480bffeaab2a1d2ccb663ee1f7c9987e4dea",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 1479902446.571026,
+  "efficiency": 0.11026745782001325,
+  "current_z+_a": -5769.001179129878,
+  "current_z-_a": -1100.8224734695284,
+  "mid_gamma": 1.3491312804462867,
+  "time_ns": 60.00024036222768,
+  "particles": 69274
+ }
+}

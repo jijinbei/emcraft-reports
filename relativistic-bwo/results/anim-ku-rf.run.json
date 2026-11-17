@@ -1,0 +1,17 @@
+{
+ "run": "anim-ku-rf",
+ "script": "scripts/anim-ku-rf.json",
+ "script_sha256": "57d0a1d29ff420ac2e77825534113b87338f6374104ce6d6fc57e79500d95e4c",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
+ "adopted": true,
+ "summary": {
+  "power_w": 70149589.91309252,
+  "efficiency": 0.08464598026084512,
+  "current_z+_a": 0.0,
+  "current_z-_a": -5.8359838837863265,
+  "mid_gamma": 1.9661686181640505,
+  "time_ns": 100.00028859849077,
+  "particles": 25227
+ }
+}
