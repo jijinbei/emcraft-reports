@@ -7,7 +7,11 @@
 Lengths in mm, frequencies in GHz."""
 import json, math, os
 
+import solid
+
 HERE = os.path.dirname(os.path.abspath(__file__))
+# Where each scan's tube is written as a SolidCraft design (built by `uv run report`, not kept).
+SCAN_DESIGNS = os.path.join(os.path.dirname(HERE), "model", "scan")
 
 # The S-band structure: λg = 127 mm at 3.6 GHz makes the three rules consistent (the TM01 guide
 # wavelength in a guide of the structure's outer radius, r0 + h/2).
@@ -221,6 +225,22 @@ def animation(script, tag, count, start=None):
     return out
 
 
+# Maps about the final design, each point a whole 60 ns run on a GPU (some 50 s): the period
+# against the beam's radius (the beam 2 mm thick, the collector moving with the structure's end),
+# and the last two periods' inner radii (the others 31.6 mm, the crest 42.2 mm).
+MAP_PERIODS = (41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 47.0)
+MAP_BEAMS = (27.0, 28.0, 29.0, 30.0, 30.5, 31.0)
+scans += [
+    (f"map-{d:g}-{b:g}", sband(30.0, (b - 2.0, b), f"map-{d:g}-{b:g}", None, d, 31.5, 5, 2.5, TAPERS["two"], 290.0 + 5 * (d - 44.0)))
+    for d in MAP_PERIODS for b in MAP_BEAMS
+]
+MAP_FOURTH = (31.6, 32.3, 33.0, 33.7, 34.4)
+MAP_FIFTH = (33.0, 34.0, 35.0, 36.0, 37.0)
+scans += [
+    (f"shallow-{a:g}-{b:g}", sband(30.0, (28.5, 30.5), f"shallow-{a:g}-{b:g}", None, 44.0, 31.5, 5, 2.5, [31.6, 31.6, 31.6, a, b], 290.0))
+    for a in MAP_FOURTH for b in MAP_FIFTH
+]
+
 # The final runs the report draws: Na et al.'s Ku band with a collector, and the S band's best
 # design (the last two periods shallower, D 44 mm, the collector at 290 mm).
 scans += [
@@ -237,7 +257,22 @@ scans += [
     ("anim-ku-growth", animation(via_solidcraft(ku_collector(), "ku"), "ku-growth", 50)),
 ]
 
+def designed(name, script):
+    """`script` with its wall drawn by its own SolidCraft design (model/scan/<name>.sc) and, a
+    particle run of the design study (not the final runs), solved on a GPU (CUDA, double precision)."""
+    out = []
+    for c in script:
+        if c["command"] == "geometry.solid":
+            solid.design(os.path.join(SCAN_DESIGNS, f"{name}.script.json"), name, c["params"]["points"])
+            c = {"command": "geometry.import", "params": {"path": f"../model/scan/{name}.sc", "materials": {"vacuum": "interior"}}}
+        elif c["command"] == "solve.particles" and not name.startswith(("final-", "anim-")):
+            c = {"command": c["command"], "params": {**c["params"], "device": "cuda", "precision": "double"}}
+        out.append(c)
+    return out
+
+
+os.makedirs(SCAN_DESIGNS, exist_ok=True)
 for name, script in (("cell", cell()), ("cell-44", cell(44.0)), ("sband", sband()), ("ku", ku()), ("ku-collector", ku_collector()), *scans):
     with open(os.path.join(HERE, name + ".json"), "w") as f:
-        json.dump(script, f, indent=1)
+        json.dump(designed(name, script), f, indent=1)
         f.write("\n")

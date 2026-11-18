@@ -385,6 +385,79 @@ def animate(tag, script, zmax, rmax, fps):
                         "scale=960:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse", "-loop", "0", gif], check=True)
 
 
+def record(run):
+    """A run's record (results/<run>.run.json): its summary, or None when it has none."""
+    path = os.path.join(RESULTS, f"{run}.run.json")
+    return json.load(open(path)).get("summary") if os.path.exists(path) else None
+
+
+def sequential(t):
+    """Pale (0) to deep blue (1)."""
+    t = max(0.0, min(1.0, t))
+    pale, deep = (240, 245, 252), (25, 60, 140)
+    return tuple(round(a + (b - a) * t) for a, b in zip(pale, deep))
+
+
+def heat(ax_title, xs, ys, value, xlabel, ylabel, best, lo, hi, fmt=lambda x: f"{x:g}"):
+    """A table of coloured cells: `value(x, y)` (efficiency, %) for each `xs` across and `ys` up,
+    the cell at `best` framed in red; an empty cell where a run has no result."""
+    cell_w, cell_h, left, top, bottom = 150, 90, 170, 140, 120
+    w, h = left + cell_w * len(xs) + 40, top + cell_h * len(ys) + bottom
+    im = Image.new("RGB", (w, h), "white")
+    d = ImageDraw.Draw(im)
+    d.text((left, 40), ax_title, fill="black", font=BIG, anchor="lm")
+    for i, x in enumerate(xs):
+        for j, y in enumerate(ys):
+            x0, y0 = left + i * cell_w, top + (len(ys) - 1 - j) * cell_h
+            v = value(x, y)
+            if v is None:
+                d.rectangle([x0, y0, x0 + cell_w, y0 + cell_h], fill=(255, 255, 255), outline=GREY)
+                d.text((x0 + cell_w / 2, y0 + cell_h / 2), "–", fill=GREY, font=SMALL, anchor="mm")
+                continue
+            t = (v - lo) / (hi - lo) if hi > lo else 0.0
+            d.rectangle([x0, y0, x0 + cell_w, y0 + cell_h], fill=sequential(t), outline="white", width=2)
+            d.text((x0 + cell_w / 2, y0 + cell_h / 2), f"{v:.1f}", fill="white" if t > 0.55 else "black", font=SMALL, anchor="mm")
+            if (x, y) == best:
+                d.rectangle([x0 + 3, y0 + 3, x0 + cell_w - 3, y0 + cell_h - 3], outline=RED, width=7)
+    for i, x in enumerate(xs):
+        d.text((left + (i + 0.5) * cell_w, top + cell_h * len(ys) + 14), fmt(x), fill="black", font=SMALL, anchor="mt")
+    for j, y in enumerate(ys):
+        d.text((left - 14, top + (len(ys) - 1 - j + 0.5) * cell_h), fmt(y), fill="black", font=SMALL, anchor="rm")
+    d.text((left + cell_w * len(xs) / 2, h - 40), xlabel, fill="black", font=SMALL, anchor="mm")
+    d.text((20, top - 30), ylabel, fill="black", font=SMALL, anchor="lm")
+    return im
+
+
+def maps():
+    """results/sband-maps.png: the efficiency (%) over the period against the beam's outer radius,
+    and over the last two periods' inner radii, each point a run on the GPU (map-*, shallow-*)."""
+    def eff(run):
+        s = record(run)
+        return 100 * s["efficiency"] if s and s.get("efficiency") is not None else None
+    periods = (41, 42, 43, 44, 45, 46, 47)
+    beams = (27, 28, 29, 30, 30.5, 31)
+    fourth = (31.6, 32.3, 33, 33.7, 34.4)
+    fifth = (33, 34, 35, 36, 37)
+    values = [eff(f"map-{d:g}-{b:g}") for d in periods for b in beams] + [eff(f"shallow-{a:g}-{b:g}") for a in fourth for b in fifth]
+    known = [v for v in values if v is not None]
+    lo, hi = (min(known), max(known)) if known else (0.0, 1.0)
+    a = heat("(a) period × beam radius", periods, beams, lambda d, b: eff(f"map-{d:g}-{b:g}"), "period D (mm)", "beam outer radius (mm)", (44, 30.5), lo, hi)
+    b = heat("(b) last two periods' inner radius", fourth, fifth, lambda x, y: eff(f"shallow-{x:g}-{y:g}"), "4th period (mm)", "5th period (mm)", (33, 35), lo, hi)
+    gap = 60
+    canvas = Image.new("RGB", (a.width + gap + b.width, max(a.height, b.height) + 110), "white")
+    canvas.paste(a, (0, 0))
+    canvas.paste(b, (a.width + gap, 0))
+    # The scale of both: efficiency (%), pale to deep.
+    d = ImageDraw.Draw(canvas)
+    x0, y, length = 170, canvas.height - 50, 700
+    for k in range(length):
+        d.line([(x0 + k, y - 14), (x0 + k, y + 14)], fill=sequential(k / (length - 1)))
+    d.rectangle([x0, y - 14, x0 + length, y + 14], outline="black", width=1)
+    d.text((x0 - 14, y), f"{lo:.1f}", fill="black", font=SMALL, anchor="rm")
+    d.text((x0 + length + 14, y), f"{hi:.1f} %  efficiency (red frame: the design)", fill="black", font=SMALL, anchor="lm")
+    canvas.save(os.path.join(RESULTS, "sband-maps.png"))
+
+
 def steady_of(run):
     """The output plane's steady power (W) from the run's reply (results/<run>.out)."""
     text = open(os.path.join(RESULTS, f"{run}.out")).read()
@@ -394,6 +467,8 @@ def steady_of(run):
 
 if __name__ == "__main__":
     asked = sys.argv[1:] or ["dispersion", "sections", "evolution", "final-ku", "final-sband"]
+    if "maps" in asked:
+        maps()
     if "dispersion" in asked:
         dispersion("cell-44.out", "sband-dispersion.png")
     if "sections" in asked:
@@ -406,7 +481,7 @@ if __name__ == "__main__":
     if "evolution" in asked:
         evolution("ku", "final-ku", 180, 22, [5, 9, 13, 17, 23, 29])
         evolution("sband", "final-sband", 405, 50, [5, 9, 13, 17, 23, 29])
-    for run in [a for a in asked if a not in ("dispersion", "sections", "evolution", "animations")]:
+    for run in [a for a in asked if a not in ("dispersion", "sections", "evolution", "animations", "maps")]:
         if not os.path.exists(os.path.join(RESULTS, f"{run}-history.csv")):
             continue
         power(run, steady_of(run))

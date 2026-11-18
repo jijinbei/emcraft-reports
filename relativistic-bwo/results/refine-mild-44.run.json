@@ -1,17 +1,19 @@
 {
  "run": "refine-mild-44",
  "script": "scripts/refine-mild-44.json",
- "script_sha256": "bb1284ef7690a98feb19bbd6d4743341ad11ff081f1c88b056a45b97bc7b6afd",
+ "script_sha256": "42487347d7a4599df01c1e2e116ae01a1ca21b61a8bcf0d0fc4dfef075f96a01",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T18:35:39",
+ "seconds": 53.8,
+ "peak_memory_mb": 237,
  "summary": {
-  "power_w": 599189895.8259166,
-  "efficiency": 0.15846376193254205,
+  "power_w": 602198393.1113409,
+  "efficiency": 0.15925941578905903,
   "current_z+_a": 0.0,
-  "current_z-_a": -541.2787412793672,
-  "mid_gamma": 1.5982355285438006,
-  "time_ns": 60.00024036222768,
-  "particles": 38797
+  "current_z-_a": -565.1422938979987,
+  "mid_gamma": 1.568939421746212,
+  "time_ns": 60.000240362227686,
+  "particles": 39406
  }
 }

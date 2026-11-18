@@ -14,7 +14,9 @@
  {
   "command": "solve.particles",
   "params": {
-   "time": 50
+   "time": 50,
+   "device": "cuda",
+   "precision": "double"
   }
  },
  {

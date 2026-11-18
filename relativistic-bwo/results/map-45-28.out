@@ -1,0 +1,298 @@
+{
+  "bodies": [
+    {
+      "as": "region",
+      "body": "vacuum",
+      "material": "interior"
+    }
+  ],
+  "bounds": [
+    [
+      -45.0,
+      -45.0,
+      0.0
+    ],
+    [
+      45.0,
+      45.0,
+      410.00000000000006
+    ]
+  ],
+  "cavity": null,
+  "curved": {
+    "cone": 121,
+    "cylinder": 3,
+    "nurbs": 0,
+    "sphere": 0,
+    "torus": 0
+  },
+  "faces": 127,
+  "open": null,
+  "pieces": null,
+  "planes": 3,
+  "region": "vacuum",
+  "triangles": 4790,
+  "volume": 0.0019104562327072988
+}
+{
+  "chosen": true,
+  "kind": "particles",
+  "solve": "solve.particles"
+}
+{
+  "beams": [],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [],
+  "plasmas": [],
+  "probes": [],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.026000000000000002,
+      "per_step": 16,
+      "radius": 0.028,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [],
+  "plasmas": [],
+  "probes": [],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.026000000000000002,
+      "per_step": 16,
+      "radius": 0.028,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [
+    "z+"
+  ],
+  "plasmas": [],
+  "probes": [],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.026000000000000002,
+      "per_step": 16,
+      "radius": 0.028,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [
+    "z+"
+  ],
+  "plasmas": [],
+  "probes": [
+    [
+      33.0,
+      0.0,
+      157.5
+    ]
+  ],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "beams": [
+    {
+      "current": 6875.0,
+      "energy": 550000.0,
+      "face": "z-",
+      "inner": 0.026000000000000002,
+      "per_step": 16,
+      "radius": 0.028,
+      "rise": 2e-9
+    }
+  ],
+  "bunches": [],
+  "emitters": [],
+  "magnetic": [
+    0.0,
+    0.0,
+    2.5
+  ],
+  "open": [
+    "z+"
+  ],
+  "plasmas": [],
+  "probes": [
+    [
+      33.0,
+      0.0,
+      157.5
+    ]
+  ],
+  "voltage": null,
+  "walls": {
+    "x": "conductor",
+    "y": "conductor",
+    "z": "conductor"
+  }
+}
+{
+  "cell": [
+    1.5,
+    1.5,
+    0.1874714220393233
+  ],
+  "cells": [
+    60,
+    60,
+    2251
+  ],
+  "device": "cuda",
+  "dt": 5.894843816738817e-13,
+  "emitted": -6875.000000006745,
+  "energy": {
+    "field": 4718.495355524676,
+    "kinetic": 3.3985427384479103
+  },
+  "fastest_ev": 684830.7238225411,
+  "gamma_max": 2.340180295532274,
+  "growth_rate": null,
+  "loss_factor_v_per_pc": null,
+  "lost": 0,
+  "metal": -6795.372891368701,
+  "mid_gamma": 1.520986316738043,
+  "outputs": [
+    {
+      "at": 390.0,
+      "efficiency": 0.05250235039467873,
+      "oscillating_w": 198524512.42987895,
+      "power_w": 198524128.9053666,
+      "steady_w": -383.52451235880585
+    }
+  ],
+  "particles": 36037,
+  "precision": "double",
+  "probes": [
+    {
+      "at": [
+        33.0,
+        0.0,
+        157.5
+      ],
+      "frequency": 3.388446270027589
+    }
+  ],
+  "steps": 101784,
+  "time_ns": 60.00007830429438,
+  "walls": {
+    "z+": {
+      "current": 0.0,
+      "density": 0.0
+    },
+    "z-": {
+      "current": -52.550007859786284,
+      "density": -8260.339269533766
+    }
+  }
+}
+{
+  "path": "../results/map-45-28-history.csv",
+  "rows": 1996,
+  "what": "history"
+}
+{
+  "path": "../results/map-45-28-probes.csv",
+  "rows": 16964,
+  "what": "probes"
+}
+{
+  "path": "../results/map-45-28-phase.csv",
+  "rows": 18019,
+  "what": "particles"
+}
+{
+  "analysis": {
+    "chosen": true,
+    "kind": "particles",
+    "solve": "solve.particles"
+  },
+  "eigenmodes": null,
+  "materials": [
+    {
+      "eps_r": 1.0,
+      "loss_tangent": 0.0,
+      "magnetic_loss_tangent": 0.0,
+      "mu_r": 1.0,
+      "name": "vacuum"
+    }
+  ],
+  "mesh": null,
+  "pcb": null,
+  "ports": [],
+  "results": null,
+  "solid": {
+    "material": "vacuum",
+    "shape": "Surface"
+  },
+  "units": {
+    "frequency": "GHz",
+    "length": "mm"
+  },
+  "waveguide": null
+}

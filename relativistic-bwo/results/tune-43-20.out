@@ -1,5 +1,38 @@
 {
-  "volume": 0.0018238956348959926
+  "bodies": [
+    {
+      "as": "region",
+      "body": "vacuum",
+      "material": "interior"
+    }
+  ],
+  "bounds": [
+    [
+      -45.0,
+      -45.0,
+      0.0
+    ],
+    [
+      45.0,
+      45.0,
+      390.00000000000006
+    ]
+  ],
+  "cavity": null,
+  "curved": {
+    "cone": 121,
+    "cylinder": 3,
+    "nurbs": 0,
+    "sphere": 0,
+    "torus": 0
+  },
+  "faces": 127,
+  "open": null,
+  "pieces": null,
+  "planes": 3,
+  "region": "vacuum",
+  "triangles": 5126,
+  "volume": 0.0017929833772776505
 }
 {
   "chosen": true,
@@ -163,37 +196,37 @@
   "cell": [
     1.5,
     1.5,
-    0.1875
+    0.18750000000000003
   ],
   "cells": [
     60,
     60,
     2144
   ],
-  "device": "cpu",
-  "dt": 5.895728597335896e-13,
-  "emitted": -6874.999999997808,
+  "device": "cuda",
+  "dt": 5.895728597335897e-13,
+  "emitted": -6874.999999997806,
   "energy": {
-    "field": 6367.132281077942,
-    "kinetic": 4.405943033612844
+    "field": 6367.125224901078,
+    "kinetic": 4.424383539238905
   },
-  "fastest_ev": 902809.2680405739,
-  "gamma_max": 2.7667536656334635,
+  "fastest_ev": 900934.6487743622,
+  "gamma_max": 2.7630851272417,
   "growth_rate": null,
   "loss_factor_v_per_pc": null,
   "lost": 0,
   "metal": 0.0,
-  "mid_gamma": 1.3804625386343072,
+  "mid_gamma": 1.3815395684620349,
   "outputs": [
     {
       "at": 370.0,
-      "efficiency": 0.15959528136177517,
-      "oscillating_w": 603469657.6492124,
-      "power_w": 1611696295.5999494,
-      "steady_w": 1008226637.950737
+      "efficiency": 0.15936341361739062,
+      "oscillating_w": 602592907.7407583,
+      "power_w": 1610560285.779247,
+      "steady_w": 1007967378.0384887
     }
   ],
-  "particles": 68406,
+  "particles": 68422,
   "precision": "double",
   "probes": [
     {
@@ -202,19 +235,19 @@
         0.0,
         142.5
       ],
-      "frequency": 3.4579463761874525
+      "frequency": 3.4578478409309628
     }
   ],
   "steps": 101769,
-  "time_ns": 60.00024036222768,
+  "time_ns": 60.000240362227686,
   "walls": {
     "z+": {
-      "current": -5593.655577528202,
-      "density": -879267.0964120138
+      "current": -5594.863110445588,
+      "density": -879456.9085925057
     },
     "z-": {
-      "current": -1274.4454406997122,
-      "density": -200330.16453164263
+      "current": -1273.0605777735002,
+      "density": -200112.4778351376
     }
   }
 }
@@ -230,7 +263,7 @@
 }
 {
   "path": "../results/tune-43-20-phase.csv",
-  "rows": 17102,
+  "rows": 17106,
   "what": "particles"
 }
 {

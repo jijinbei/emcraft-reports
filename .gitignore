@@ -16,6 +16,7 @@ relativistic-bwo/results/*.scan
 relativistic-bwo/results/*.done
 relativistic-bwo/results/model-parts/
 relativistic-bwo/scripts/__pycache__/
+relativistic-bwo/model/scan/
 
 # The environment uv makes (uv sync) and the site it builds (uv run report site).
 .venv/

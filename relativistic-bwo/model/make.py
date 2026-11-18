@@ -8,29 +8,12 @@ import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "scripts"))
 import make  # noqa: E402  the walls (r, z in mm)
+import solid  # noqa: E402
 
 
 def design(name, title, wall):
-    """A SolidCraft script: `wall`'s points (r, z), from the axis round to the axis, as lines on
-    the plane whose x is the global z and y the global x, revolved about that x."""
-    points = [{"fixed": True, "id": "origin", "pos": [0.0, 0.0]}]
-    curves = []
-    for i, (r, z) in enumerate(wall):
-        points.append({"fixed": True, "id": f"p{i + 1}", "pos": [float(z), float(r)]})
-    n = len(wall)
-    for i in range(n):
-        curves.append({"a": i + 1, "b": (i + 1) % n + 1, "construction": False, "id": f"l{i + 1}", "type": "line"})
-    sketch = {"constraints": [], "counters": {"l": n, "p": n, "s": 0}, "curves": curves, "equations": [], "points": points}
-    profile = {"id": 1, "name": "profile", "plane": {"origin": [0.0, 0.0, 0.0], "type": "placed", "x_dir": [0.0, 0.0, 1.0], "y_dir": [1.0, 0.0, 0.0]},
-               "sketch": sketch, "suppressed": False, "type": "sketch"}
-    revolve = {"angle": "360 deg", "axis": {"axis": "x", "type": "sketch_axis"}, "body_names": ["vacuum"], "convention": "sketch_normal", "id": 2,
-               "name": "vacuum", "operation": "new_body", "profiles": {"type": "all"}, "sketch": 1, "suppressed": False, "type": "revolve"}
-    script = {"commands": [{"command": "file.new", "params": {"name": title}},
-                           {"command": "timeline.add", "params": {"feature": profile}},
-                           {"command": "timeline.add", "params": {"feature": revolve}}]}
-    with open(os.path.join(HERE, f"{name}.script.json"), "w") as f:
-        json.dump(script, f, indent=1)
-        f.write("\n")
+    """model/<name>.script.json: the vacuum inside `wall` (scripts/solid.py)."""
+    solid.design(os.path.join(HERE, f"{name}.script.json"), title, wall)
 
 
 def view(name, title, wall, beam, collector):

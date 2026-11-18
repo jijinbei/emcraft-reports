@@ -1,17 +1,19 @@
 {
  "run": "refine-last-44",
  "script": "scripts/refine-last-44.json",
- "script_sha256": "1c57767ce1b7f25477bd8c86dfab61bf833c37af2a4698a8e8f76a150dc6d6ad",
+ "script_sha256": "f2cd4420a96ed08e2b33b72a8b73db7d72f716bd6ccc4b9f133d24d1ff104181",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T18:34:47",
+ "seconds": 52.1,
+ "peak_memory_mb": 239,
  "summary": {
-  "power_w": 625354917.5254728,
-  "efficiency": 0.1653834448121315,
+  "power_w": 640173282.7207469,
+  "efficiency": 0.16930221568117385,
   "current_z+_a": 0.0,
-  "current_z-_a": -571.669727080665,
-  "mid_gamma": 1.5762081076329602,
-  "time_ns": 60.00024036222768,
-  "particles": 39716
+  "current_z-_a": -579.8522403458651,
+  "mid_gamma": 1.5909684188945146,
+  "time_ns": 60.000240362227686,
+  "particles": 40111
  }
 }

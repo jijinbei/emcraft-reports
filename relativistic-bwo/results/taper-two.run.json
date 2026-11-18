@@ -1,17 +1,19 @@
 {
  "run": "taper-two",
  "script": "scripts/taper-two.json",
- "script_sha256": "56b51cdb94380b5ff9a3a70996d1480bffeaab2a1d2ccb663ee1f7c9987e4dea",
+ "script_sha256": "e287e5b76367a7447f06eb83abeff5c411eb592f492fbc61fb681fc7406d0432",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T19:18:29",
+ "seconds": 66.2,
+ "peak_memory_mb": 242,
  "summary": {
-  "power_w": 1479902446.571026,
-  "efficiency": 0.11026745782001325,
-  "current_z+_a": -5769.001179129878,
-  "current_z-_a": -1100.8224734695284,
-  "mid_gamma": 1.3491312804462867,
-  "time_ns": 60.00024036222768,
-  "particles": 69274
+  "power_w": 1478972561.9166715,
+  "efficiency": 0.10731769591851902,
+  "current_z+_a": -5829.2427164198125,
+  "current_z-_a": -1037.5241045984815,
+  "mid_gamma": 1.3616368469357294,
+  "time_ns": 60.000240362227686,
+  "particles": 68061
  }
 }

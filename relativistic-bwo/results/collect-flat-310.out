@@ -1,5 +1,38 @@
 {
-  "volume": 0.0018767874941627372
+  "bodies": [
+    {
+      "as": "region",
+      "body": "vacuum",
+      "material": "interior"
+    }
+  ],
+  "bounds": [
+    [
+      -45.0,
+      -45.0,
+      0.0
+    ],
+    [
+      45.0,
+      45.0,
+      405.00000000000006
+    ]
+  ],
+  "cavity": null,
+  "curved": {
+    "cone": 121,
+    "cylinder": 3,
+    "nurbs": 0,
+    "sphere": 0,
+    "torus": 0
+  },
+  "faces": 127,
+  "open": null,
+  "pieces": null,
+  "planes": 3,
+  "region": "vacuum",
+  "triangles": 4838,
+  "volume": 0.0018427445813665592
 }
 {
   "chosen": true,
@@ -163,37 +196,37 @@
   "cell": [
     1.5,
     1.5,
-    0.1875
+    0.18750000000000003
   ],
   "cells": [
     60,
     60,
     2224
   ],
-  "device": "cpu",
-  "dt": 5.895728597335896e-13,
-  "emitted": -6874.999999997808,
+  "device": "cuda",
+  "dt": 5.895728597335897e-13,
+  "emitted": -6874.999999997806,
   "energy": {
-    "field": 4953.044121889065,
-    "kinetic": 3.8515587670081888
+    "field": 4953.055304150168,
+    "kinetic": 3.8380766784152005
   },
-  "fastest_ev": 1125363.8587761722,
-  "gamma_max": 3.202282135383292,
+  "fastest_ev": 1120353.507152686,
+  "gamma_max": 3.192477121843589,
   "growth_rate": null,
   "loss_factor_v_per_pc": null,
   "lost": 0,
-  "metal": -6193.123894566706,
-  "mid_gamma": 1.5899146408408944,
+  "metal": -6193.301224575489,
+  "mid_gamma": 1.5855362484960798,
   "outputs": [
     {
       "at": 385.0,
-      "efficiency": 0.14145322337899327,
-      "oscillating_w": 534870000.90181834,
-      "power_w": 534873073.0090292,
-      "steady_w": 3072.1072108821895
+      "efficiency": 0.14163593943042838,
+      "oscillating_w": 535560895.97130734,
+      "power_w": 535563953.3272318,
+      "steady_w": 3057.355924487078
     }
   ],
-  "particles": 42426,
+  "particles": 42425,
   "precision": "double",
   "probes": [
     {
@@ -202,19 +235,19 @@
         0.0,
         155.0
       ],
-      "frequency": 7.764744435214814
+      "frequency": 3.4139376980010967
     }
   ],
   "steps": 101769,
-  "time_ns": 60.00024036222768,
+  "time_ns": 60.000240362227686,
   "walls": {
     "z+": {
       "current": 0.0,
       "density": 0.0
     },
     "z-": {
-      "current": -681.4032254101585,
-      "density": -107109.81882744464
+      "current": -681.4285582685667,
+      "density": -107113.80090116149
     }
   }
 }

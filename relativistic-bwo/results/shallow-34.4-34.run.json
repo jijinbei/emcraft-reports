@@ -1,0 +1,19 @@
+{
+ "run": "shallow-34.4-34",
+ "script": "scripts/shallow-34.4-34.json",
+ "script_sha256": "70632f494884e41d6507a07f4a7e0bd590ef114d61fb09dea843772e70b23093",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T19:04:30",
+ "seconds": 46.4,
+ "peak_memory_mb": 234,
+ "summary": {
+  "power_w": 628573496.2619511,
+  "efficiency": 0.16623420409505582,
+  "current_z+_a": 0.0,
+  "current_z-_a": -434.019418787504,
+  "mid_gamma": 1.609236720464099,
+  "time_ns": 60.000240362227686,
+  "particles": 39100
+ }
+}

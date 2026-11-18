@@ -1,17 +1,19 @@
 {
  "run": "ku-collector",
  "script": "scripts/ku-collector.json",
- "script_sha256": "92e8dd6c61a21e532f304499f2af59471f61f55edcee5ec39457935b0dc02b93",
+ "script_sha256": "e6292a5e3c7b906956435d9882416847b4f4e82b70db5da76414227c901ba291",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T17:48:15",
+ "seconds": 85.6,
+ "peak_memory_mb": 226,
  "summary": {
-  "power_w": 59476762.62100932,
-  "efficiency": 0.07176687791136699,
+  "power_w": 70159043.60566474,
+  "efficiency": 0.08465739279949357,
   "current_z+_a": 0.0,
-  "current_z-_a": -1.3815409072699478,
-  "mid_gamma": 1.9496348050870504,
-  "time_ns": 50.000144299245385,
-  "particles": 25297
+  "current_z-_a": -5.804460467892348,
+  "mid_gamma": 1.963034983931837,
+  "time_ns": 100.00028859849077,
+  "particles": 25225
  }
 }

@@ -1,17 +1,19 @@
 {
  "run": "more-44-5-4",
  "script": "scripts/more-44-5-4.json",
- "script_sha256": "00a90128f10f407801f2bc88fc7c435432d8d0458af834c6b745c8c71c6da056",
+ "script_sha256": "9a6c291162ada33642b098d269d7ec2cf5fdf9d658b20f677e53bc31c15fb81c",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T18:25:25",
+ "seconds": 70.7,
+ "peak_memory_mb": 244,
  "summary": {
-  "power_w": 1790079153.383429,
-  "efficiency": 0.1936518136742387,
-  "current_z+_a": -5738.6861919038065,
-  "current_z-_a": -1132.3872150436632,
-  "mid_gamma": 1.41477420547993,
-  "time_ns": 60.00024036222768,
-  "particles": 67524
+  "power_w": 1787043483.0124242,
+  "efficiency": 0.19333657412315475,
+  "current_z+_a": -5736.710228948074,
+  "current_z-_a": -1135.9929252234926,
+  "mid_gamma": 1.4225543246170733,
+  "time_ns": 60.000240362227686,
+  "particles": 67363
  }
 }

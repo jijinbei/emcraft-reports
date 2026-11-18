@@ -1,11 +1,13 @@
 {
  "run": "cell",
  "script": "scripts/cell.json",
- "script_sha256": "f5b765512f077674ca7d783161b0fdb4662a9ecc87c440e7f7cb372c47d070d4",
+ "script_sha256": "2ae8eccb3bd8eff17e792c77ea1ee4a0c35e4cc84df93e1005868f0e16f9f407",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T17:29:46",
+ "seconds": 4.2,
+ "peak_memory_mb": 77,
  "summary": {
-  "unknowns": 3229
+  "unknowns": 3239
  }
 }

@@ -1,17 +1,19 @@
 {
  "run": "collect-flat-275",
  "script": "scripts/collect-flat-275.json",
- "script_sha256": "70aaeb0215af4fcf6178f6739e93873e9e8396d32c2e0e4e1df24a1293d84e46",
+ "script_sha256": "c150c645f66b8cd583ca0cda9f6632b25f3f16d2791619be6eb92818ae30abfa",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T17:29:50",
+ "seconds": 60.8,
+ "peak_memory_mb": 234,
  "summary": {
-  "power_w": 576853303.3870723,
-  "efficiency": 0.15255570784703626,
+  "power_w": 576809854.9050777,
+  "efficiency": 0.15254418943956916,
   "current_z+_a": 0.0,
-  "current_z-_a": -698.5282376927494,
-  "mid_gamma": 1.668483927259672,
-  "time_ns": 60.00024036222768,
-  "particles": 38137
+  "current_z-_a": -700.6561977988674,
+  "mid_gamma": 1.6640318827118896,
+  "time_ns": 60.000240362227686,
+  "particles": 38106
  }
 }

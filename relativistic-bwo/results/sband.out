@@ -1,5 +1,38 @@
 {
-  "volume": 0.0019160441634975898
+  "bodies": [
+    {
+      "as": "region",
+      "body": "vacuum",
+      "material": "interior"
+    }
+  ],
+  "bounds": [
+    [
+      -45.0,
+      -45.0,
+      0.0
+    ],
+    [
+      45.0,
+      45.0,
+      420.0
+    ]
+  ],
+  "cavity": null,
+  "curved": {
+    "cone": 121,
+    "cylinder": 3,
+    "nurbs": 0,
+    "sphere": 0,
+    "torus": 0
+  },
+  "faces": 127,
+  "open": null,
+  "pieces": null,
+  "planes": 3,
+  "region": "vacuum",
+  "triangles": 4438,
+  "volume": 0.0018987909835095032
 }
 {
   "chosen": true,
@@ -31,9 +64,9 @@
       "current": 6875.0,
       "energy": 550000.0,
       "face": "z-",
-      "inner": 0.024,
+      "inner": 0.027,
       "per_step": 16,
-      "radius": 0.026000000000000002,
+      "radius": 0.029,
       "rise": 2e-9
     }
   ],
@@ -60,9 +93,9 @@
       "current": 6875.0,
       "energy": 550000.0,
       "face": "z-",
-      "inner": 0.024,
+      "inner": 0.027,
       "per_step": 16,
-      "radius": 0.026000000000000002,
+      "radius": 0.029,
       "rise": 2e-9
     }
   ],
@@ -91,9 +124,9 @@
       "current": 6875.0,
       "energy": 550000.0,
       "face": "z-",
-      "inner": 0.024,
+      "inner": 0.027,
       "per_step": 16,
-      "radius": 0.026000000000000002,
+      "radius": 0.029,
       "rise": 2e-9
     }
   ],
@@ -112,7 +145,7 @@
     [
       33.0,
       0.0,
-      157.5
+      162.5
     ]
   ],
   "voltage": null,
@@ -128,9 +161,9 @@
       "current": 6875.0,
       "energy": 550000.0,
       "face": "z-",
-      "inner": 0.024,
+      "inner": 0.027,
       "per_step": 16,
-      "radius": 0.026000000000000002,
+      "radius": 0.029,
       "rise": 2e-9
     }
   ],
@@ -149,7 +182,7 @@
     [
       33.0,
       0.0,
-      157.5
+      162.5
     ]
   ],
   "voltage": null,
@@ -163,58 +196,58 @@
   "cell": [
     1.5,
     1.5,
-    0.1875282422051514
+    0.1875
   ],
   "cells": [
     60,
     60,
-    2277
+    2304
   ],
-  "device": "cpu",
-  "dt": 5.896602976745666e-13,
-  "emitted": -6875.000000000345,
+  "device": "cuda",
+  "dt": 5.895728597335896e-13,
+  "emitted": -6874.999999997808,
   "energy": {
-    "field": 6764.362404772,
-    "kinetic": 3.5474149593070385
+    "field": 6844.608290298052,
+    "kinetic": 4.903089940437779
   },
-  "fastest_ev": 573569.4043204478,
-  "gamma_max": 2.122447324646662,
+  "fastest_ev": 1101688.837876696,
+  "gamma_max": 3.155951275212925,
   "growth_rate": null,
   "loss_factor_v_per_pc": null,
   "lost": 0,
   "metal": 0.0,
-  "mid_gamma": 1.3541766218084603,
+  "mid_gamma": 1.5639842774062191,
   "outputs": [
     {
-      "at": 395.0,
-      "efficiency": 0.02149553467989387,
-      "oscillating_w": 81279990.5083487,
-      "power_w": 1731846069.7355757,
-      "steady_w": 1650566079.227227
+      "at": 400.0,
+      "efficiency": 0.05470826803915856,
+      "oscillating_w": 206865638.5230683,
+      "power_w": 1273304508.79449,
+      "steady_w": 1066438870.2714218
     }
   ],
-  "particles": 61557,
+  "particles": 68620,
   "precision": "double",
   "probes": [
     {
       "at": [
         33.0,
         0.0,
-        157.5
+        162.5
       ],
-      "frequency": 3.653453777631496
+      "frequency": 3.318171486195569
     }
   ],
-  "steps": 67836,
-  "time_ns": 40.0001959530519,
+  "steps": 101769,
+  "time_ns": 60.00024036222768,
   "walls": {
     "z+": {
-      "current": -6328.028259332349,
-      "density": -994703.1876522918
+      "current": -5489.436198045018,
+      "density": -862884.845142168
     },
     "z-": {
-      "current": -372.51491648980357,
-      "density": -58555.64477512773
+      "current": -1380.8012245751663,
+      "density": -217048.23735158518
     }
   }
 }
@@ -225,12 +258,12 @@
 }
 {
   "path": "../results/sband-probes.csv",
-  "rows": 16959,
+  "rows": 16961,
   "what": "probes"
 }
 {
   "path": "../results/sband-phase.csv",
-  "rows": 15390,
+  "rows": 17155,
   "what": "particles"
 }
 {

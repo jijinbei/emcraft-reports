@@ -1,17 +1,19 @@
 {
  "run": "collect-two-310",
  "script": "scripts/collect-two-310.json",
- "script_sha256": "4c3d5f13e0a2ff9eb302acdc703c2d1c7e46bbe7b0c914b0ba78aad491573357",
+ "script_sha256": "b8f17226283c2ec17591704dc1de1c2584ac2b878b98e78346b806113f5801c8",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T17:34:38",
+ "seconds": 61.6,
+ "peak_memory_mb": 237,
  "summary": {
-  "power_w": 505422915.8677657,
-  "efficiency": 0.13365877744824967,
+  "power_w": 494991226.9100177,
+  "efficiency": 0.13089868649588587,
   "current_z+_a": 0.0,
-  "current_z-_a": -482.54028692152326,
-  "mid_gamma": 1.5818856915269703,
-  "time_ns": 60.00024036222768,
-  "particles": 41677
+  "current_z-_a": -466.38636754449834,
+  "mid_gamma": 1.5876482202720896,
+  "time_ns": 60.000240362227686,
+  "particles": 41631
  }
 }

@@ -1,5 +1,38 @@
 {
-  "volume": 0.002092502900783314
+  "bodies": [
+    {
+      "as": "region",
+      "body": "vacuum",
+      "material": "interior"
+    }
+  ],
+  "bounds": [
+    [
+      -45.0,
+      -45.0,
+      0.0
+    ],
+    [
+      45.0,
+      45.0,
+      455.0
+    ]
+  ],
+  "cavity": null,
+  "curved": {
+    "cone": 145,
+    "cylinder": 3,
+    "nurbs": 0,
+    "sphere": 0,
+    "torus": 0
+  },
+  "faces": 151,
+  "open": null,
+  "pieces": null,
+  "planes": 3,
+  "region": "vacuum",
+  "triangles": 5008,
+  "volume": 0.002042160679632499
 }
 {
   "chosen": true,
@@ -170,30 +203,30 @@
     60,
     2491
   ],
-  "device": "cpu",
+  "device": "cuda",
   "dt": 5.894931310771065e-13,
   "emitted": -6874.9999999961965,
   "energy": {
-    "field": 7396.293530061245,
-    "kinetic": 4.971048113906616
+    "field": 7396.317746761812,
+    "kinetic": 4.976108450577817
   },
-  "fastest_ev": 1017241.5350104747,
-  "gamma_max": 2.990692025919252,
+  "fastest_ev": 1015706.631970288,
+  "gamma_max": 2.9876882955980877,
   "growth_rate": null,
   "loss_factor_v_per_pc": null,
   "lost": 0,
   "metal": 0.0,
-  "mid_gamma": 1.3746668715492734,
+  "mid_gamma": 1.3819306060057326,
   "outputs": [
     {
       "at": 435.0,
-      "efficiency": 0.053175206721783726,
-      "oscillating_w": 201068750.4167447,
-      "power_w": 1223941909.2952788,
-      "steady_w": 1022873158.8785341
+      "efficiency": 0.05299065947464097,
+      "oscillating_w": 200370931.13848615,
+      "power_w": 1220546630.3803287,
+      "steady_w": 1020175699.2418425
     }
   ],
-  "particles": 81422,
+  "particles": 81423,
   "precision": "double",
   "probes": [
     {
@@ -202,19 +235,19 @@
         0.0,
         157.5
       ],
-      "frequency": 5.27512976515675
+      "frequency": 3.393891329766446
     }
   ],
   "steps": 101783,
   "time_ns": 60.00037936042113,
   "walls": {
     "z+": {
-      "current": -5715.767427834682,
-      "density": -898461.8663738645
+      "current": -5707.510051920992,
+      "density": -897163.8888986727
     },
     "z-": {
-      "current": -1133.5739163322028,
-      "density": -178186.56014252707
+      "current": -1142.464526595108,
+      "density": -179584.07576765784
     }
   }
 }

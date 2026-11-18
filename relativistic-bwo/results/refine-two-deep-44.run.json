@@ -1,17 +1,19 @@
 {
  "run": "refine-two-deep-44",
  "script": "scripts/refine-two-deep-44.json",
- "script_sha256": "7ad65be6bef14b24e1dafff5450c265e102fa7f4f1726badab19da01f5f5c446",
+ "script_sha256": "ab963e6172074f9e3fe594f317dc01739d6e1ed1f426a5f3bf9353f5003dfd5f",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T18:39:00",
+ "seconds": 45.3,
+ "peak_memory_mb": 233,
  "summary": {
-  "power_w": 415723183.3297607,
-  "efficiency": 0.10994295612889553,
+  "power_w": 511190669.3738507,
+  "efficiency": 0.1351909278916806,
   "current_z+_a": 0.0,
-  "current_z-_a": -266.2652304215851,
-  "mid_gamma": 1.5349466670758165,
-  "time_ns": 60.00024036222768,
-  "particles": 39462
+  "current_z-_a": -283.5760169991682,
+  "mid_gamma": 1.5257630960319013,
+  "time_ns": 60.000240362227686,
+  "particles": 37972
  }
 }

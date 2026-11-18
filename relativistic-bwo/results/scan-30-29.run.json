@@ -1,17 +1,19 @@
 {
  "run": "scan-30-29",
  "script": "scripts/scan-30-29.json",
- "script_sha256": "a9666ec9f38f15d16978fba6876415ca04e84934d7a89ecbb31df1626117eb2a",
+ "script_sha256": "d3a62025a092ea17cc3860f116536cda38a73dc1c004e217c31a0678936cdf5a",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T18:44:05",
+ "seconds": 70.3,
+ "peak_memory_mb": 243,
  "summary": {
-  "power_w": 1274539333.0652008,
-  "efficiency": 0.05499448665160486,
-  "current_z+_a": -5488.43132799491,
-  "current_z-_a": -1377.3390672596588,
-  "mid_gamma": 1.5794377920511433,
+  "power_w": 1273304508.79449,
+  "efficiency": 0.05470826803915856,
+  "current_z+_a": -5489.436198045018,
+  "current_z-_a": -1380.8012245751663,
+  "mid_gamma": 1.5639842774062191,
   "time_ns": 60.00024036222768,
-  "particles": 69185
+  "particles": 68620
  }
 }

@@ -1,17 +1,19 @@
 {
  "run": "tune-44-45",
  "script": "scripts/tune-44-45.json",
- "script_sha256": "4acedad07f775a0b9acc55b40b35fd0da4b066d4499f00d8245305ce7d0e81d1",
+ "script_sha256": "5a43880b47c78e04087863fd486e975f379c066b7d5d854a9b49c1d26d75daf2",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T19:28:56",
+ "seconds": 70.8,
+ "peak_memory_mb": 243,
  "summary": {
-  "power_w": 1706365182.3847294,
-  "efficiency": 0.16327918814755368,
-  "current_z+_a": -5863.019860961392,
-  "current_z-_a": -1013.7281062689158,
-  "mid_gamma": 1.4301370484956994,
+  "power_w": 1706058810.7372534,
+  "efficiency": 0.16328551195090366,
+  "current_z+_a": -5862.749643805089,
+  "current_z-_a": -1015.5689606464346,
+  "mid_gamma": 1.4279759378208563,
   "time_ns": 60.00024036222768,
-  "particles": 68440
+  "particles": 68288
  }
 }

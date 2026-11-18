@@ -1,17 +1,19 @@
 {
  "run": "sband",
  "script": "scripts/sband.json",
- "script_sha256": "ddb91bb921f1d4d3d8bb89a88917acf2882e3b1566cb3085fb73a5e92849bf1d",
+ "script_sha256": "af04405d0e0e3084155794e39fa530b1b326d394d7d9d1ed288d7ff3aabdb7fd",
  "status": "done",
- "emcraft": "emcraft-cli 0.1.0 (develop d8e4fa3c)",
- "adopted": true,
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T18:39:45",
+ "seconds": 70.9,
+ "peak_memory_mb": 249,
  "summary": {
-  "power_w": 1731846069.7355757,
-  "efficiency": 0.02149553467989387,
-  "current_z+_a": -6328.028259332349,
-  "current_z-_a": -372.51491648980357,
-  "mid_gamma": 1.3541766218084603,
-  "time_ns": 40.0001959530519,
-  "particles": 61557
+  "power_w": 1273304508.79449,
+  "efficiency": 0.05470826803915856,
+  "current_z+_a": -5489.436198045018,
+  "current_z-_a": -1380.8012245751663,
+  "mid_gamma": 1.5639842774062191,
+  "time_ns": 60.00024036222768,
+  "particles": 68620
  }
 }

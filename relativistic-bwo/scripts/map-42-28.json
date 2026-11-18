@@ -1,0 +1,93 @@
+[
+ {
+  "command": "geometry.import",
+  "params": {
+   "path": "../model/scan/map-42-28.sc",
+   "materials": {
+    "vacuum": "interior"
+   }
+  }
+ },
+ {
+  "command": "project.analysis",
+  "params": {
+   "kind": "particles"
+  }
+ },
+ {
+  "command": "particles.magnetic",
+  "params": {
+   "b": [
+    0,
+    0,
+    2.5
+   ],
+   "end": 280.0,
+   "fall": 10
+  }
+ },
+ {
+  "command": "particles.beam",
+  "params": {
+   "face": "z-",
+   "current": 6875.0,
+   "energy": 550000.0,
+   "radius": 28.0,
+   "inner": 26.0,
+   "rise": 2000
+  }
+ },
+ {
+  "command": "particles.open",
+  "params": {
+   "face": "z+"
+  }
+ },
+ {
+  "command": "particles.probe",
+  "params": {
+   "at": [
+    33,
+    0,
+    150.0
+   ]
+  }
+ },
+ {
+  "command": "particles.output",
+  "params": {
+   "at": 375.0
+  }
+ },
+ {
+  "command": "solve.particles",
+  "params": {
+   "time": 60,
+   "cell": 1.5,
+   "axisymmetric": true,
+   "fine": 8,
+   "device": "cuda",
+   "precision": "double"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/map-42-28-history.csv"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/map-42-28-probes.csv",
+   "what": "probes"
+  }
+ },
+ {
+  "command": "results.particles.export",
+  "params": {
+   "path": "../results/map-42-28-phase.csv",
+   "what": "particles"
+  }
+ }
+]

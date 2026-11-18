@@ -45,8 +45,8 @@ def replies(text):
 
 
 def summary(objs):
-    """A run's replies in a few numbers: a particle run's output plane, probe frequency, wall
-    currents and speeds; a frequency run's unknowns."""
+    """A run's replies in a few numbers: a particle run's output plane, its first probe's
+    frequency, wall currents and speeds; a frequency run's unknowns."""
     s = {}
     for o in objs:
         if not isinstance(o, dict):
@@ -54,6 +54,9 @@ def summary(objs):
         if o.get("outputs"):
             out = o["outputs"][0]
             s.update({"power_w": out.get("power_w"), "efficiency": out.get("efficiency")})
+        probes = o.get("probes")
+        if isinstance(probes, list) and probes and isinstance(probes[0], dict) and isinstance(probes[0].get("frequency"), (int, float)):
+            s["frequency_ghz"] = probes[0]["frequency"]
         if isinstance(o.get("walls"), dict):
             s.update({f"current_{k}_a": v.get("current") for k, v in o["walls"].items() if isinstance(v, dict)})
         for key in ("mid_gamma", "time_ns", "particles", "unknowns"):

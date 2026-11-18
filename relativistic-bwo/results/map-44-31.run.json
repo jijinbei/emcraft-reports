@@ -1,0 +1,19 @@
+{
+ "run": "map-44-31",
+ "script": "scripts/map-44-31.json",
+ "script_sha256": "93463f1f7b147728979e0f37a25139262405b33310d98eaa1201bacc57ddf0ac",
+ "status": "done",
+ "emcraft": "emcraft-cli 0.1.0 (v0.1.0-24-g91f418d2)",
+ "started": "2026-11-18T18:06:03",
+ "seconds": 48.8,
+ "peak_memory_mb": 235,
+ "summary": {
+  "power_w": 643904281.3458328,
+  "efficiency": 0.17028872555500782,
+  "current_z+_a": 0.0,
+  "current_z-_a": -504.5123194458485,
+  "mid_gamma": 1.5837322057422911,
+  "time_ns": 60.000240362227686,
+  "particles": 39958
+ }
+}
