@@ -54,7 +54,7 @@ Na ら（J. Comput. Phys. 346:295, 2017；arXiv:1701.03784 §5.1）の構造と�
   image("results/final-ku-power.png"), image("results/final-ku-spectrum.png"), image("results/final-ku-phase.png")),
   caption: [Ku 帯の結果。左：出力（約 50 ns で定常）。中：スペクトル（15.32 GHz の単一の山）。右：電子の z と運動エネルギー（束になる様子、@fig-principle (b)）。]) <fig-ku-results>
 
-#figure(image("results/ku-evolution.png", width: 100%), caption: [Ku 帯の時間発展。$E_z$（青が負、赤が正）に電子（黒い点）を重ねた。遅波構造に立つ波が育ち、ビームが束になって進み、コレクタで壁へ曲がる。動画：#video("ku-growth", [成長 0〜100 ns]) ・ #video("ku-rf", [定常の RF 約 9 周期])。]) <fig-ku-evolution>
+#figure(image("results/ku-evolution.png", width: 100%), caption: [Ku 帯の時間発展。$E_z$（青が負、赤が正、全時刻で同じ色の目盛り）に電子（黒い点）を重ねた。遅波構造に立つ波が育ち、ビームが束になって進み、コレクタで壁へ曲がる。動画：#video("ku-growth", [成長 0〜100 ns]) ・ #video("ku-rf", [定常の RF 約 9 周期])。]) <fig-ku-evolution>
 
 #table(columns: 3, align: (left, right, right),
   [*量*], [*EMCraft（0.5 mm）*], [*Na ら*],

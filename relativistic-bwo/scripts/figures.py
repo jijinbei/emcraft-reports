@@ -292,7 +292,7 @@ def panel(m, f, script, zmax, rmax, vmax=None, width=2400, notes=False):
             x, y = sec.px(row[4], math.hypot(row[2], row[3]))
             sec.d.ellipse([x - 1.5, y - 1.5, x + 1.5, y + 1.5], fill="black")
     sec.d.text((sec.l, 25), f"t = {t:.2f} ns", fill="black", font=BIG, anchor="lm")
-    sec.d.text((sec.w - 40, 25), f"E_z: blue -, red + (±{vmax / 1e6:.2g} MV/m)   ·   dots: electrons", fill="black", font=SMALL, anchor="rm")
+    colour_bar(sec.d, sec.w - 40, 25, vmax)
     if notes:
         def arrow(z0, z1, r, colour):
             (x0, y), (x1, _) = sec.px(z0, r), sec.px(z1, r)
@@ -305,6 +305,37 @@ def panel(m, f, script, zmax, rmax, vmax=None, width=2400, notes=False):
         arrow(0.62 * zmax, 0.30 * zmax, y_note, RED)
         sec.d.text(sec.px(0.64 * zmax, y_note), "backward wave: power flows back", fill=RED, font=SMALL, anchor="lm", stroke_width=6, stroke_fill="white")
     return sec.im
+
+
+def nice(v):
+    """`v` rounded to two significant figures."""
+    return float(f"{v:.2g}")
+
+
+def colour_bar(d, right, y, vmax, length=420, height=22):
+    """The colour scale of E_z, its right end at `right`, centred on `y`: −vmax blue through 0
+    white to +vmax red, in MV/m, and what the dots are."""
+    text = "dots: electrons"
+    x = right - d.textlength(text, font=SMALL)
+    d.text((x, y), text, fill="black", font=SMALL, anchor="lm")
+    hi = f"+{nice(vmax / 1e6):g} MV/m"
+    x -= 40 + d.textlength(hi, font=SMALL)
+    d.text((x, y), hi, fill="black", font=SMALL, anchor="lm")
+    x1, x0 = x - 12, x - 12 - length
+    for k in range(length):
+        d.line([(x0 + k, y - height / 2), (x0 + k, y + height / 2)], fill=diverging(2 * k / (length - 1) - 1))
+    d.rectangle([x0, y - height / 2, x1, y + height / 2], outline="black", width=1)
+    mid = (x0 + x1) / 2
+    d.line([(mid, y - height / 2 - 5), (mid, y + height / 2 + 5)], fill="black", width=2)
+    d.text((x0 - 12, y), f"-{nice(vmax / 1e6):g}", fill="black", font=SMALL, anchor="rm")
+    d.text((x0 - 12 - d.textlength(f"-{nice(vmax / 1e6):g}", font=SMALL) - 16, y), "E_z", fill="black", font=SMALL, anchor="rm")
+
+
+def shared_scale(kept):
+    """One colour scale for moments `kept`: the 98th percentile of |E_z| over all of them, so
+    the field's growth shows as its colour deepening."""
+    values = sorted(abs(r[4]) for m, _ in kept for r in m)
+    return nice(values[int(0.98 * (len(values) - 1))]) or 1.0
 
 
 def moments(tag):
@@ -321,9 +352,10 @@ def moments(tag):
 
 def evolution(tag, script, zmax, rmax, picks):
     """E_z on the r–z plane with the electrons over it at the moments `picks` (indices into the
-    run's moments), stacked down the page."""
-    kept = moments(f"final-{tag}")
-    panels = [panel(m, f, script, zmax, rmax) for k, (m, f) in enumerate(kept) if k in picks]
+    run's moments), stacked down the page, all on one colour scale."""
+    kept = [mf for k, mf in enumerate(moments(f"final-{tag}")) if k in picks]
+    vmax = shared_scale(kept)
+    panels = [panel(m, f, script, zmax, rmax, vmax) for m, f in kept]
     if panels:
         canvas = Image.new("RGB", (panels[0].width, sum(p.height for p in panels)), "white")
         y = 0
@@ -339,7 +371,7 @@ def animate(tag, script, zmax, rmax, fps):
     growth shows."""
     import subprocess, tempfile
     kept = moments(f"anim-{tag}")
-    vmax = sorted(abs(r[4]) for m, _ in kept for r in m)[int(0.98 * (sum(len(m) for m, _ in kept) - 1))]
+    vmax = shared_scale(kept)
     with tempfile.TemporaryDirectory() as tmp:
         for k, (m, f) in enumerate(kept):
             im = panel(m, f, script, zmax, rmax, vmax, width=1920, notes=True)
